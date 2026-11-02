@@ -64,11 +64,11 @@
   "items": {
    "corte": {
     "n": "Tall",
-    "d": "Tall a tisora o màquina, rentat i pentinat amb acabat de barberia."
+    "d": "Tall a tisora o màquina, amb acabat i pentinat de barberia."
    },
    "corte-barba": {
     "n": "Tall + Barba",
-    "d": "El pack complet: tall, perfilat de barba amb navalla i tovallola calenta."
+    "d": "El pack complet: tall i perfilat de barba amb navalla."
    },
    "barba": {
     "n": "Barba",

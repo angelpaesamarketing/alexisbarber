@@ -64,11 +64,11 @@
   "items": {
    "corte": {
     "n": "Corte",
-    "d": "Corte à tesoura ou à máquina, lavagem e penteado com acabamento de barbearia."
+    "d": "Corte à tesoura ou à máquina, com acabamento e penteado de barbearia."
    },
    "corte-barba": {
     "n": "Corte + Barba",
-    "d": "O pacote completo: corte, contorno de barba à navalha e toalha quente."
+    "d": "O pacote completo: corte e contorno de barba à navalha."
    },
    "barba": {
     "n": "Barba",

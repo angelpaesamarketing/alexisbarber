@@ -64,11 +64,11 @@
   "items": {
    "corte": {
     "n": "Corte",
-    "d": "Corte a tijera o máquina, lavado y peinado con acabado de barbería."
+    "d": "Corte a tijera o máquina, con acabado y peinado de barbería."
    },
    "corte-barba": {
     "n": "Corte + Barba",
-    "d": "El pack completo: corte, perfilado de barba con navaja y toalla caliente."
+    "d": "El pack completo: corte y perfilado de barba con navaja."
    },
    "barba": {
     "n": "Barba",

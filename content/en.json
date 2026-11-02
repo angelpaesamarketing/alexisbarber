@@ -64,11 +64,11 @@
   "items": {
    "corte": {
     "n": "Haircut",
-    "d": "Scissor or clipper cut, wash and styling with a proper barbershop finish."
+    "d": "Scissor or clipper cut, styled with a proper barbershop finish."
    },
    "corte-barba": {
     "n": "Haircut + Beard",
-    "d": "The full thing: cut, razor beard line-up and a hot towel."
+    "d": "The full thing: cut plus a razor beard line-up."
    },
    "barba": {
     "n": "Beard",

@@ -64,11 +64,11 @@
   "items": {
    "corte": {
     "n": "Haarschnitt",
-    "d": "Schnitt mit Schere oder Maschine, Waschen und Styling mit Barbier-Finish."
+    "d": "Schnitt mit Schere oder Maschine, gestylt mit Barbier-Finish."
    },
    "corte-barba": {
     "n": "Haarschnitt + Bart",
-    "d": "Das Komplettpaket: Schnitt, Bartkonturen mit dem Rasiermesser und heißes Tuch."
+    "d": "Das Komplettpaket: Schnitt und Bartkonturen mit dem Rasiermesser."
    },
    "barba": {
     "n": "Bart",
