@@ -26,7 +26,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Inter:wght@400;500;600&display=swap">
-<link rel="preload" as="image" href="/assets/img/logo-3d.webp">
+<link rel="preload" as="fetch" href="/assets/img/logo-shape.json" crossorigin>
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js">
 <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
@@ -225,5 +226,10 @@
 </script>
 
 <script src="/assets/js/main.js" defer></script>
+
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js" } }
+</script>
+<script type="module" src="/assets/js/logo3d.js"></script>
 </body>
 </html>

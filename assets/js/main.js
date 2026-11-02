@@ -98,9 +98,14 @@ const CONFIG = {
   const zones = $("#zones");
   if (zones) zones.innerHTML = CONFIG.zonas.map(z => `<li>${z}</li>`).join("");
 
-  /* ── Logo 3D: capas de extrusión ───────────────────────── */
+  const stage = $("#stage");
+
+  /* ── Logo: pila de capas en CSS (respaldo sin WebGL) ───── */
   const spin = $("#spin");
-  if (spin) {
+
+  const buildCssLogo = () => {
+    if (!spin || spin.dataset.built) return;
+    spin.dataset.built = "1";
     const small = innerWidth < 560;
     const LAYERS = small ? 16 : 28;
 
@@ -136,11 +141,37 @@ const CONFIG = {
       frag.appendChild(img);
     }
     spin.insertBefore(frag, front);
+  };
+
+  // Si hay WebGL y el usuario no ha pedido menos movimiento, manda logo3d.js;
+  // ese módulo llama a __abFallback si no consigue arrancar.
+  const hasWebGL = () => {
+    try {
+      const c = document.createElement("canvas");
+      return !!(c.getContext("webgl2") || c.getContext("webgl"));
+    } catch { return false; }
+  };
+
+  window.__abFallback = () => {
+    stage?.removeAttribute("data-pending3d");
+    buildCssLogo();
+  };
+
+  if (spin && !lessMotion && hasWebGL()) {
+    stage?.setAttribute("data-pending3d", "");
+    // Red de seguridad: si el módulo 3D ni siquiera llega a ejecutarse (CDN
+    // bloqueado, sin importmap), nadie llamaría a __abFallback y el visitante
+    // se quedaría sin logo. A los 4 s se monta la versión CSS igualmente.
+    setTimeout(() => {
+      if (!stage?.hasAttribute("data-webgl")) window.__abFallback();
+    }, 4000);
+  } else {
+    buildCssLogo();
   }
 
   /* ── Inclinación del logo con el puntero ───────────────── */
   const tilt = $("#tilt");
-  if (tilt && !lessMotion && matchMedia("(pointer: fine)").matches) {
+  if (tilt && !stage?.hasAttribute("data-webgl") && !lessMotion && matchMedia("(pointer: fine)").matches) {
     addEventListener("pointermove", e => {
       const y = 13 + (e.clientY / innerHeight - .5) * -16;   // 5° … 21°
       const x = (e.clientX / innerWidth - .5) * 7;

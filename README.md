@@ -41,7 +41,8 @@ los registros DNS y el SSL se crean solos.
 ```
 index.html                  Página completa (una sola)
 assets/css/style.css        Estilos
-assets/js/main.js           CONFIG + animaciones
+assets/js/main.js           CONFIG + animaciones de la página
+assets/js/logo3d.js         Logo 3D con Three.js (bloque LOOK para ajustarlo)
 assets/img/
   logo-3d.webp               Logo cromado, cara frontal del giro
   logo-3d-slab.webp          Silueta sólida, capas de extrusión 3D
@@ -55,14 +56,43 @@ assets/img/
 
 ## Cómo funciona el logo giratorio
 
-No son fotogramas. `main.js` apila 26 copias de `logo-3d-slab.webp` separadas en
-el eje Z para generar el grosor de la pieza, y pone `logo-3d.webp` (la versión
-cromada) en las dos caras. El conjunto gira con `rotateY` 360° dentro de un
-contenedor con `transform-style: preserve-3d`, y un barrido de luz enmascarado
-con la silueta hace el brillo metálico.
+Es 3D de verdad, no fotogramas ni capas simuladas. `assets/js/logo3d.js` carga
+`assets/img/logo-shape.json` —la silueta del **logo original vectorizada**, dos
+contornos sólidos y un hueco— y la extruye con Three.js (`ExtrudeGeometry` con
+chaflán) para obtener una pieza con grosor y borde biselado. La recubre un
+material metálico con reflejos de un entorno generado en un `<canvas>`, así que
+no hace falta ningún archivo de imagen para el cromado.
 
-En móvil baja a 14 capas, la animación se pausa al salir de pantalla y con
-`prefers-reduced-motion` el logo se queda quieto en una pose fija.
+Gira 360° con *easing*: se demora mirando de frente y cruza deprisa los dos
+instantes en que queda de canto, donde la marca no se lee. La curva es
+`θ = φ − k·sin(2φ)`, que sigue avanzando 2π por vuelta.
+
+Todo el aspecto se ajusta desde el bloque `LOOK` al principio del archivo
+(grosor, chaflán, rugosidad, reflejos, duración de la vuelta). No hace falta
+leer el resto.
+
+### Dos avisos para quien lo toque
+
+- **El chaflán no puede crecer mucho.** Por encima de `bisel: .012` el chaflán
+  se auto-interseca en las zonas cóncavas y deforma las letras.
+- **Las normales van planas a propósito.** Suavizarlas con `toCreasedNormals`
+  se probó: limpia el facetado del canto pero deja las caras veteadas. Queda
+  peor.
+
+### Respaldo sin WebGL
+
+Si el navegador no tiene WebGL, el usuario ha pedido menos movimiento, o el CDN
+de Three.js está bloqueado, se monta una versión en CSS: 28 copias de
+`logo-3d-slab.webp` apiladas en el eje Z con el render cromado en las dos caras.
+`main.js` la monta pasados 4 s si para entonces el módulo 3D no ha arrancado —
+sin ese plazo, un CDN bloqueado dejaría la página sin logo.
+
+Esa versión CSS tiene dos trampas aprendidas a base de depurar, por si se toca:
+en Chromium, cualquier capa con `filter` o `backface-visibility` dentro del
+bloque 3D se promociona a capa propia, sale de la ordenación por profundidad y
+el navegador pinta por orden del DOM, de modo que las láminas tapan el cromo.
+Por eso los tonos del canto van horneados en `logo-slab-d/m/l.webp` en vez de
+aplicarse con `filter`, y no hay ni un `backface-visibility` ahí dentro.
 
 ## Colores
 
