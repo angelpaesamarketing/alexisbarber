@@ -137,11 +137,22 @@ la resolución del mapa de entorno, ni su contraste, ni triángulos degenerados.
 
 ### El entorno de reflejos
 
-Es un degradado vertical liso con ruido fino, dibujado en un `<canvas>` de
-512×256. Nada más, y a propósito: se probaron focos pintados y el
-`RoomEnvironment` de Three.js, y los dos tienen cantos duros que una superficie
-casi especular refleja como bandas. El ruido evita que el degradado se cuantice
-al difuminarse para la rugosidad del canto.
+Un metal es un espejo: su aspecto **es** lo que refleja. Por eso el entorno es
+un estudio de focos claros sobre fondo oscuro, pintado en un `<canvas>` de
+1024×512 — sin él, con un degradado plano, la pieza parece plástico mate.
+
+Dos detalles que lo sostienen:
+
+- **Los focos van difuminados en los dos ejes.** Con cantos duros, una
+  superficie casi especular los refleja como bandas nítidas. El helper `foco`
+  los dibuja con degradado radial justamente por eso.
+- **Ruido fino sobre todo el mapa.** Un degradado en 8 bits, al difuminarse
+  para la rugosidad del canto, se cuantiza y sale en terrazas.
+
+**La cara y el canto llevan rugosidad distinta a propósito**: la cara en 0,055
+(casi espejo, es la que lee como cromo) y el canto en 0,48. El canto necesita
+más difusión porque las facetas del contorno poligonal, con un entorno tan
+contrastado, se marcarían. Bajarlo lo raya.
 
 ### Respaldo sin WebGL
 

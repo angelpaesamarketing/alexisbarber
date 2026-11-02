@@ -20,9 +20,12 @@ const LOOK = {
   vueltaSeg:  16,    // segundos por vuelta completa
   pausaCaras: .34,   // 0 = velocidad constante; más alto = se demora de frente
   faseIni:    -.34,  // ángulo inicial, para que la primera imagen sea legible
-  caraBrillo: .12,   // rugosidad de la cara: 0 = espejo
-  cantoBrillo:.34,   // rugosidad del canto
-  reflejos:   2.5,   // intensidad de los reflejos del entorno
+  caraBrillo: .055,  // rugosidad de la cara: 0 = espejo
+  cantoBrillo:.48,   // rugosidad del canto. Va aparte de la cara a propósito:
+                     // la cara es la que lee como cromo, y el canto necesita
+                     // algo más de difusión para que las facetas del contorno
+                     // no se marquen. Bajarlo lo raya.
+  reflejos:   3.0,   // intensidad de los reflejos del entorno
   exposicion: 1.08,
   alisado:    40,    // grados: por debajo de este ángulo se suavizan las
                      // normales, para que el canto salga liso y no a rayas.
@@ -120,28 +123,53 @@ async function build() {
   scene.add(pivot);
 
   /* ── Escena de reflejos ──────────────────────────────────── */
-  // Un degradado liso, nada más. Se probaron focos pintados y el
-  // RoomEnvironment de Three.js: los dos tienen cantos duros que una
-  // superficie casi especular refleja como bandas.
+  // Estudio de focos: un metal es un espejo, así que su aspecto es
+  // literalmente lo que refleja. Un degradado plano da plástico mate; estos
+  // focos claros sobre fondo oscuro son los que dibujan el cromado.
+  //
+  // Los bordes van difuminados en los dos ejes a propósito (ver `foco`): con
+  // cantos duros, una superficie casi especular los refleja como bandas.
+  const EW = 1024, EH = 512;
   const envCanvas = document.createElement("canvas");
-  envCanvas.width = 512; envCanvas.height = 256;
+  envCanvas.width = EW; envCanvas.height = EH;
   {
     const g = envCanvas.getContext("2d");
-    const gr = g.createLinearGradient(0, 0, 0, 256);
-    gr.addColorStop(0,   "#1a1314");
-    gr.addColorStop(.30, "#584244");
-    gr.addColorStop(.50, "#f2e2e1");
-    gr.addColorStop(.70, "#4b383a");
-    gr.addColorStop(1,   "#0c0909");
-    g.fillStyle = gr; g.fillRect(0, 0, 512, 256);
 
-    // Ruido fino. Un degradado liso en 8 bits, al difuminarse para la
-    // rugosidad alta, se cuantiza y aparece como terrazas en las paredes
-    // interiores. El ruido rompe esos escalones y el desenfoque lo promedia.
-    const img = g.getImageData(0, 0, 512, 256);
+    const gr = g.createLinearGradient(0, 0, 0, EH);
+    gr.addColorStop(0,   "#0d0a0b");
+    gr.addColorStop(.34, "#2f2325");
+    gr.addColorStop(.50, "#c9b3b2");
+    gr.addColorStop(.66, "#271c1e");
+    gr.addColorStop(1,   "#070505");
+    g.fillStyle = gr; g.fillRect(0, 0, EW, EH);
+
+    const foco = (x, y, w, h, col) => {
+      const cx = x + w / 2, cy = y + h / 2, r = Math.max(w, h) / 2;
+      const rg = g.createRadialGradient(cx, cy, 0, cx, cy, r);
+      rg.addColorStop(0, col); rg.addColorStop(.42, col); rg.addColorStop(1, "transparent");
+      g.save();
+      g.translate(cx, cy); g.scale(1, h / Math.max(w, h)); g.translate(-cx, -cy);
+      g.fillStyle = rg; g.beginPath(); g.arc(cx, cy, r, 0, Math.PI * 2); g.fill();
+      g.restore();
+    };
+
+    foco(20,  10, 380, 190, "#ffffff");
+    foco(530, 20, 360, 180, "#ffffff");
+    foco(370, 70, 150, 120, "#fff4f3");
+    foco(850, 46, 190, 150, "#ffffff");
+    foco(60,  310, 440, 170, "rgba(255,210,208,1)");
+    foco(580, 290, 320, 150, "rgba(255,236,235,.95)");
+    // huecos oscuros entre focos: sin contraste no hay cromado
+    foco(300, 150, 150, 200, "rgba(5,3,4,.95)");
+    foco(830, 160, 170, 190, "rgba(5,3,4,.95)");
+    foco(450, 190, 160, 160, "rgba(5,3,4,.88)");
+
+    // Ruido fino: un degradado en 8 bits, al difuminarse para la rugosidad
+    // del canto, se cuantiza y sale en terrazas. El ruido lo rompe.
+    const img = g.getImageData(0, 0, EW, EH);
     const d = img.data;
     for (let i = 0; i < d.length; i += 4) {
-      const n = (Math.random() - .5) * 11;
+      const n = (Math.random() - .5) * 10;
       d[i] += n; d[i + 1] += n; d[i + 2] += n;
     }
     g.putImageData(img, 0, 0);
