@@ -71,13 +71,29 @@ Todo el aspecto se ajusta desde el bloque `LOOK` al principio del archivo
 (grosor, chaflán, rugosidad, reflejos, duración de la vuelta). No hace falta
 leer el resto.
 
-### Dos avisos para quien lo toque
+### Tres avisos para quien lo toque
 
 - **El chaflán no puede crecer mucho.** Por encima de `bisel: .012` el chaflán
   se auto-interseca en las zonas cóncavas y deforma las letras.
-- **Las normales van planas a propósito.** Suavizarlas con `toCreasedNormals`
-  se probó: limpia el facetado del canto pero deja las caras veteadas. Queda
-  peor.
+
+- **El canto se ve liso por tres cosas combinadas**, y quitar cualquiera de
+  ellas devuelve el rayado:
+  1. `cantoBrillo` está en **0,38**. Es la que más pesa: difumina el reflejo
+     del canto lo justo para que las facetas de la pared dejen de delatarse.
+     Bajarlo a 0,16 devuelve las rayas aunque todo lo demás siga igual.
+  2. El mapa de entorno se pinta a **192×96 px** a propósito, dibujando en
+     coordenadas de 1024×512 y escalando el contexto. A resolución alta, los
+     cantos duros de los focos se reflejan en la pared como bandas nítidas.
+  3. `alisado` (40°) suaviza las normales de la pared manteniendo el chaflán,
+     y `toCreasedNormals` se aplica **antes** de escalar la pieza a 1 unidad:
+     agrupa vértices con precisión fija de ~0,01, que a escala final sería el
+     1 % del logo y mezclaría cara con chaflán. `bevelSegments` vale **1** por
+     lo mismo: con un solo tramo el chaflán queda a 45°, por encima del
+     umbral; partido en dos, el primer tramo cae a ~22° y las caras se vetean.
+
+- **La densidad de `logo-shape.json` importa.** El contorno se muestreó cada
+  2,6 px (unos 2.750 puntos). Con muestreos más gruesos, las curvas cerradas
+  generan facetas de ángulo grande que quedan fuera del alisado.
 
 ### Respaldo sin WebGL
 

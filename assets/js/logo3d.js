@@ -18,9 +18,14 @@ const LOOK = {
   pausaCaras: .34,   // 0 = velocidad constante; más alto = se demora de frente
   faseIni:    -.34,  // ángulo inicial, para que la primera imagen sea legible
   caraBrillo: .07,   // rugosidad de la cara: 0 = espejo
-  cantoBrillo:.28,   // rugosidad del canto
-  reflejos:   2.6,   // intensidad de los reflejos del entorno
+  cantoBrillo:.38,   // rugosidad del canto: difumina el reflejo y con él
+                     // las bandas que delatan las facetas de la pared
+  reflejos:   2.5,   // intensidad de los reflejos del entorno
   exposicion: 1.08,
+  alisado:    40,    // grados: por debajo de este ángulo se suavizan las
+                     // normales, para que el canto salga liso y no a rayas.
+                     // Tiene que quedar por debajo de 45°, que es el ángulo
+                     // entre la cara y el chaflán
 };
 
 const stage = document.getElementById("stage");
@@ -65,14 +70,28 @@ async function build() {
     bevelThickness: W * LOOK.bisel * .92,
     bevelSize:      W * LOOK.bisel,
     bevelOffset:    0,
-    bevelSegments:  2,
+    // Un solo tramo: el chaflán queda a 45° de la cara, muy por encima del
+    // umbral de alisado, así que cara y borde no se mezclan. Partirlo en
+    // varios tramos deja el primero a ~22° y las caras salen veteadas.
+    bevelSegments:  1,
     curveSegments:  1,
   });
 
-  // Normales planas por faceta, que es lo que trae ExtrudeGeometry: deja las
-  // caras limpias y el chaflán nítido. Suavizarlas con toCreasedNormals se
-  // probó y queda peor (las caras salen veteadas).
-  const geoF = geo;
+  // Alisado del canto. OJO con el orden: toCreasedNormals agrupa vértices con
+  // una precisión fija de ~0.01 unidades, así que hay que aplicarlo AHORA, con
+  // la geometría todavía a ~900 unidades de ancho. Si se hace después de
+  // escalarla a 1, esa precisión pasa a ser el 1 % del logo, mezcla las
+  // normales de la cara con las del chaflán y las caras salen veteadas.
+  let geoF = geo;
+  if (LOOK.alisado > 0) {
+    try {
+      const { toCreasedNormals } = await import("three/addons/utils/BufferGeometryUtils.js");
+      geoF = toCreasedNormals(geo, LOOK.alisado * Math.PI / 180);
+      if (!geoF.groups?.length) for (const g of geo.groups) geoF.addGroup(g.start, g.count, g.materialIndex);
+    } catch {
+      geoF = geo;   // sin el módulo de utilidades: facetas planas, como antes
+    }
+  }
 
   geoF.computeBoundingBox();
   const bb = geoF.boundingBox, size = new THREE.Vector3();
@@ -99,39 +118,55 @@ async function build() {
   scene.add(pivot);
 
   /* ── Escena de reflejos (sin archivos externos) ──────────── */
-  const EW = 1024, EH = 512;
+  // El entorno se pinta A BAJA RESOLUCIÓN a propósito. Comprobado: con un
+  // entorno plano los laterales salen perfectamente lisos, así que las rayas
+  // del canto no venían de la geometría sino de reflejar cantos duros del
+  // mapa. A 192x96, el filtrado bilineal los difumina por construcción y ya
+  // no pueden existir. Se dibuja en coordenadas de 1024x512 y se escala.
+  const EW = 192, EH = 96;
   const c = document.createElement("canvas");
   c.width = EW; c.height = EH;
   const g = c.getContext("2d");
+  g.scale(EW / 1024, EH / 512);
 
-  const grad = g.createLinearGradient(0, 0, 0, EH);
-  grad.addColorStop(0,   "#0d0a0b");
-  grad.addColorStop(.46, "#3a2b2d");
-  grad.addColorStop(.52, "#e9d6d5");
-  grad.addColorStop(.6,  "#241a1b");
-  grad.addColorStop(1,   "#050404");
-  g.fillStyle = grad; g.fillRect(0, 0, EW, EH);
+  const grad = g.createLinearGradient(0, 0, 0, 512);
+  grad.addColorStop(0,   "#140e0f");
+  grad.addColorStop(.34, "#4a3739");
+  grad.addColorStop(.5,  "#e7d3d2");
+  grad.addColorStop(.68, "#3a2b2c");
+  grad.addColorStop(1,   "#0a0708");
+  g.fillStyle = grad; g.fillRect(0, 0, 1024, 512);
 
-  // focos de estudio: lo que dibuja los brillos del cromo
+  // Focos de estudio: lo que dibuja los brillos del cromo. Van con los bordes
+  // difuminados en los dos ejes a propósito. Con bordes duros, la pared lisa
+  // del canto refleja esos cantos como bandas nítidas y el lateral parece
+  // rayado aunque la geometría esté perfectamente suavizada.
   const strip = (x, y, w, h, col) => {
-    const lg = g.createLinearGradient(x, y, x, y + h);
-    lg.addColorStop(0, "transparent"); lg.addColorStop(.5, col); lg.addColorStop(1, "transparent");
-    g.fillStyle = lg; g.fillRect(x, y, w, h);
+    const cx = x + w / 2, cy = y + h / 2, r = Math.max(w, h) / 2;
+    const rg = g.createRadialGradient(cx, cy, 0, cx, cy, r);
+    rg.addColorStop(0, col);
+    rg.addColorStop(.45, col);
+    rg.addColorStop(1, "transparent");
+    g.save();
+    g.translate(cx, cy); g.scale(1, h / Math.max(w, h)); g.translate(-cx, -cy);
+    g.fillStyle = rg; g.beginPath(); g.arc(cx, cy, r, 0, Math.PI * 2); g.fill();
+    g.restore();
   };
-  strip(40,  18, 300, 150, "#ffffff");
-  strip(560, 40, 300, 130, "#ffffff");
-  strip(390, 96,  90,  70, "rgba(255,236,235,.85)");
-  strip(880, 70, 130, 110, "rgba(255,246,245,.9)");
-  strip(100, 320, 380, 130, "rgba(255,198,196,.95)");
-  strip(620, 300, 260, 110, "rgba(255,228,227,.85)");
+  strip(20,  10, 360, 170, "#ffffff");
+  strip(540, 26, 340, 160, "#ffffff");
+  strip(380, 80, 130, 100, "#fff4f3");
+  strip(860, 54, 170, 130, "#ffffff");
+  strip(80,  310, 420, 150, "rgba(255,206,204,1)");
+  strip(600, 292, 300, 130, "rgba(255,234,233,.95)");
   // zonas oscuras entre focos: sin ellas el reflejo sale plano
-  g.fillStyle = "rgba(10,7,8,.72)";
-  g.fillRect(340, 150, 60, 120);
-  g.fillRect(870, 160, 80, 110);
-  g.fillRect(480, 190, 70,  90);
+  strip(320, 150, 120, 170, "rgba(14,10,11,.78)");
+  strip(850, 160, 140, 160, "rgba(14,10,11,.78)");
+  strip(460, 190, 130, 140, "rgba(14,10,11,.7)");
 
   const envTex = new THREE.CanvasTexture(c);
   envTex.mapping = THREE.EquirectangularReflectionMapping;
+  envTex.magFilter = THREE.LinearFilter;
+  envTex.minFilter = THREE.LinearFilter;
   envTex.colorSpace = THREE.SRGBColorSpace;
 
   /* ── Render ──────────────────────────────────────────────── */
@@ -145,8 +180,8 @@ async function build() {
   scene.environment = pmrem.fromEquirectangular(envTex).texture;
   envTex.dispose(); pmrem.dispose();
 
-  const key = new THREE.DirectionalLight(0xfff6f5, 2.6); key.position.set(-1.1, 1.5, 2.2);
-  const rim = new THREE.DirectionalLight(0xffb9b7, 1.5); rim.position.set(1.6, -.6, -1.4);
+  const key = new THREE.DirectionalLight(0xfff6f5, 3.4); key.position.set(-1.1, 1.5, 2.2);
+  const rim = new THREE.DirectionalLight(0xffc6c4, 2.2); rim.position.set(1.7, -.5, -1.5);
   scene.add(key, rim, new THREE.AmbientLight(0xffffff, .14));
 
   const camera = new THREE.PerspectiveCamera(30, 1, .1, 100);
