@@ -1,0 +1,129 @@
+{
+ "meta": {
+  "title": "Alexis Barber · Mobiler Barbier in Barcelona",
+  "desc": "Barbier für zu Hause in Barcelona. Alexis kommt mit allem zu dir: Haarschnitt, Fade und Bart, ohne Anfahrt und ohne Wartezeit. Er spricht castellano, català, english, français und deutsch.",
+  "ogTitle": "Alexis Barber · Mobiler Barbier in Barcelona",
+  "ogDesc": "Dein Barbier kommt zu dir. Haarschnitt, Fade und Bartpflege zu Hause in Barcelona, in fünf Sprachen."
+ },
+ "nav": {
+  "skip": "Zum Inhalt springen",
+  "inicio": "Alexis Barber, Startseite",
+  "principal": "Hauptnavigation",
+  "como": "So läuft es",
+  "servicios": "Leistungen",
+  "zona": "Gebiet",
+  "reservar": "Termin",
+  "idioma": "Sprache",
+  "bajar": "Nach unten"
+ },
+ "wa": {
+  "msg": "Hallo Alexis, ich würde gern einen Haarschnitt zu Hause buchen.",
+  "aria": "Per WhatsApp buchen"
+ },
+ "hero": {
+  "eyebrow": "Mobiler Barbier · Barcelona",
+  "h1a": "Dein Barbier",
+  "h1b": "kommt zu dir",
+  "lede": "Haarschnitt, Fade und Bart mit echtem Barbier-Finish — bei dir im Wohnzimmer. Keine Anfahrt, kein Wartezimmer, und zu der Uhrzeit, die dir wirklich passt.",
+  "cta1": "Per WhatsApp buchen",
+  "cta2": "Leistungen ansehen",
+  "langs": "Ich bediene dich auf",
+  "langsNota": "Sprache wählen — die Seite zieht mit",
+  "chips": [
+   "Ich bringe alles mit",
+   "Antwort am selben Tag",
+   "Bar oder Bizum"
+  ]
+ },
+ "como": {
+  "eyebrow": "Ganz einfach",
+  "h2": "Drei Schritte, fertig",
+  "steps": [
+   {
+    "t": "Schreib mir auf WhatsApp",
+    "d": "Du sagst mir, was du möchtest und in welchem Viertel von Barcelona du wohnst. Ohne Formulare, ohne Anmeldung."
+   },
+   {
+    "t": "Wir machen Tag und Uhrzeit aus",
+    "d": "Wir finden den Termin, der dir passt. Abends, am Wochenende und auch kurzfristig."
+   },
+   {
+    "t": "Ich komme zu dir",
+    "d": "Ich bringe Maschinen, Schere, Umhang und alles Weitere mit. Du brauchst nur einen Stuhl."
+   }
+  ]
+ },
+ "servicios": {
+  "eyebrow": "Leistungen",
+  "h2": "Was ich für dich machen kann",
+  "lede": "Feste Preise, keine Überraschungen. Die Anfahrt innerhalb Barcelonas ist inklusive.",
+  "nota": "Mehrere Personen in derselben Wohnung? Dafür gibt es einen Gruppenpreis — frag mich einfach auf WhatsApp.",
+  "tag": "Am häufigsten gebucht",
+  "min": "Min. ca.",
+  "items": {
+   "corte": {
+    "n": "Haarschnitt",
+    "d": "Schnitt mit Schere oder Maschine, Waschen und Styling mit Barbier-Finish."
+   },
+   "corte-barba": {
+    "n": "Haarschnitt + Bart",
+    "d": "Das Komplettpaket: Schnitt, Bartkonturen mit dem Rasiermesser und heißes Tuch."
+   },
+   "barba": {
+    "n": "Bart",
+    "d": "Kürzen, Konturen und gründliche Rasur. Öl und Balsam inklusive."
+   },
+   "infantil": {
+    "n": "Kinderhaarschnitt",
+    "d": "Für die Kleinen, zu Hause und ganz entspannt. Bis 12 Jahre."
+   },
+   "rapado": {
+    "n": "Komplett kurz",
+    "d": "Maschine auf einer Länge, sauber und schnell."
+   }
+  }
+ },
+ "porque": {
+  "eyebrow": "Warum zu Hause",
+  "h2": "Der Schnitt in deinem Tempo",
+  "items": [
+   {
+    "t": "Ich spreche deine Sprache",
+    "d": "Castellano, català, english, français und deutsch. Wenn du gerade erst nach Barcelona gezogen bist und dir schwerfällt zu erklären, wie du deinen Schnitt willst — hier passiert das nicht."
+   },
+   {
+    "t": "Eingeschränkte Mobilität",
+    "d": "Wenn das Haus zu verlassen das eigentliche Problem ist, komme ich zu dir. Ältere Kundschaft, nach einer Operation oder bei eingeschränkter Mobilität: kein Transport zu organisieren, niemand, auf den man angewiesen ist."
+   },
+   {
+    "t": "Keine Wartezeit",
+    "d": "Nie wieder ankommen und drei Leute vor sich haben. Dein Termin gehört dir."
+   },
+   {
+    "t": "Ideal für Kinder",
+    "d": "Zu Hause sind sie ruhig, haben ihre Sachen um sich und keinen Stress mit dem Salon."
+   },
+   {
+    "t": "Ich räume alles auf",
+    "d": "Ich komme, arbeite und lasse alles sauber zurück. Du fegst kein einziges Haar."
+   }
+  ]
+ },
+ "zona": {
+  "eyebrow": "Einzugsgebiet",
+  "h2": "Barcelona und Umgebung",
+  "lede": "Ich fahre in ganz Barcelona. Wenn du im Großraum wohnst, schreib mir trotzdem und wir finden eine Lösung."
+ },
+ "final": {
+  "h2": "Sollen wir?",
+  "lede": "Schreib mir auf WhatsApp und ich sage dir, was diese Woche noch frei ist.",
+  "cta": "Auf WhatsApp schreiben",
+  "horario": "Montag bis Samstag · 10:00 – 21:00 Uhr"
+ },
+ "foot": {
+  "legal": "Barcelona"
+ },
+ "ld": {
+  "desc": "Mobiler Barbier in Barcelona. Haarschnitte, Fades und Bartpflege beim Kunden zu Hause. Service auf Spanisch, Katalanisch, Englisch, Französisch und Deutsch, auch für Menschen mit eingeschränkter Mobilität."
+ }
+}

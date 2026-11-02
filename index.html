@@ -4,14 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Alexis Barber · Barbería a domicilio en Barcelona</title>
-<meta name="description" content="Barbería a domicilio en Barcelona. Alexis va a tu casa con todo el material: corte, degradado y barba sin desplazarte ni esperar. Atiende en castellano, catalán, inglés, francés y alemán, y se desplaza a domicilio para personas con movilidad reducida. Reserva por WhatsApp.">
+<meta name="description" content="Barbería a domicilio en Barcelona. Alexis va a tu casa con todo el material: corte, degradado y barba sin desplazarte ni esperar. Atiende en castellano, català, english, français y deutsch.">
 <meta name="theme-color" content="#000000">
 <link rel="canonical" href="https://alexisbarber.com/">
+<link rel="alternate" hreflang="es" href="https://alexisbarber.com/">
+<link rel="alternate" hreflang="ca" href="https://alexisbarber.com/ca/">
+<link rel="alternate" hreflang="en" href="https://alexisbarber.com/en/">
+<link rel="alternate" hreflang="fr" href="https://alexisbarber.com/fr/">
+<link rel="alternate" hreflang="de" href="https://alexisbarber.com/de/">
+<link rel="alternate" hreflang="x-default" href="https://alexisbarber.com/">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://alexisbarber.com/">
 <meta property="og:title" content="Alexis Barber · Barbería a domicilio en Barcelona">
-<meta property="og:description" content="Tu barbero va a tu casa. Corte, degradado y barba a domicilio en Barcelona. Reserva por WhatsApp.">
+<meta property="og:description" content="Tu barbero va a tu casa. Corte, degradado y barba a domicilio en Barcelona, en cinco idiomas.">
 <meta property="og:image" content="https://alexisbarber.com/assets/img/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -36,7 +42,7 @@
 
 <header class="nav" id="nav">
   <div class="wrap nav__in">
-    <a class="nav__brand" href="#inicio" aria-label="Alexis Barber, inicio">
+    <a class="nav__brand" href="/" aria-label="Alexis Barber, inicio">
       <img src="/assets/img/logo-mark.webp" alt="" width="40" height="40">
       <span>Alexis Barber</span>
     </a>
@@ -45,7 +51,7 @@
       <a href="#servicios">Servicios</a>
       <a href="#zona">Zona</a>
     </nav>
-    <a class="btn btn--sm js-wa" href="#contacto" data-msg="Hola Alexis, quería reservar un corte a domicilio.">
+    <a class="btn btn--sm" href="https://wa.me/34659412558?text=Hola%20Alexis%2C%20quer%C3%ADa%20reservar%20un%20corte%20a%20domicilio." target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>
       Reservar
     </a>
@@ -62,6 +68,7 @@
   <div class="wrap hero__in">
     <div class="stage" id="stage">
       <span class="stage__glow" aria-hidden="true"></span>
+      <span class="stage__glint" aria-hidden="true"></span>
       <div class="logo3d" id="logo3d" aria-hidden="true">
        <div class="logo3d__tilt" id="tilt">
         <div class="logo3d__spin" id="spin">
@@ -71,28 +78,37 @@
         </div>
        </div>
       </div>
-      <span class="stage__glint" aria-hidden="true"></span>
       <span class="stage__shadow" aria-hidden="true"></span>
     </div>
 
-    <p class="eyebrow reveal">Barbería a domicilio · Barcelona</p>
-    <h1 class="reveal">Tu barbero<br><em>viene a tu casa</em></h1>
-    <p class="lede reveal">Corte, degradado y barba con acabado de barbería, en tu salón.
-      Sin desplazarte, sin sala de espera y a la hora que te va bien.</p>
+    <p class="eyebrow rise" style="--d:0s">Barbería a domicilio · Barcelona</p>
+    <h1 class="rise" style="--d:.06s">Tu barbero<br><em>viene a tu casa</em></h1>
+    <p class="lede rise" style="--d:.12s">Corte, degradado y barba con acabado de barbería, en tu salón. Sin desplazarte, sin sala de espera y a la hora que te va bien.</p>
 
-    <div class="cta reveal">
-      <a class="btn btn--lg js-wa" href="#contacto" data-msg="Hola Alexis, quería reservar un corte a domicilio.">
+    <div class="langs rise" style="--d:.18s">
+      <p class="langs__label">Te atiendo en</p>
+      <ul class="langs__list" aria-label="Idioma">
+        <li><a class="langs__pill is-on" href="/" lang="es" aria-current="page">Castellano</a></li>
+        <li><a class="langs__pill" href="/ca/" lang="ca">Català</a></li>
+        <li><a class="langs__pill" href="/en/" lang="en">English</a></li>
+        <li><a class="langs__pill" href="/fr/" lang="fr">Français</a></li>
+        <li><a class="langs__pill" href="/de/" lang="de">Deutsch</a></li>
+      </ul>
+      <p class="langs__note">Elige tu idioma y la web cambia contigo</p>
+    </div>
+
+    <div class="cta rise" style="--d:.24s">
+      <a class="btn btn--lg" href="https://wa.me/34659412558?text=Hola%20Alexis%2C%20quer%C3%ADa%20reservar%20un%20corte%20a%20domicilio." target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>
         Reservar por WhatsApp
       </a>
       <a class="btn btn--ghost btn--lg" href="#servicios">Ver servicios</a>
     </div>
 
-    <ul class="chips reveal">
+    <ul class="chips rise" style="--d:.30s">
       <li>Voy con todo el material</li>
       <li>Respuesta el mismo día</li>
       <li>Pago en efectivo o Bizum</li>
-      <li data-idiomas></li>
     </ul>
   </div>
 
@@ -104,7 +120,6 @@
   <div class="wrap">
     <p class="eyebrow reveal">Así de fácil</p>
     <h2 class="reveal">Tres pasos y listo</h2>
-
     <div class="grid grid--3 steps">
       <article class="card tilt reveal">
         <span class="card__num">01</span>
@@ -131,9 +146,39 @@
     <p class="eyebrow reveal">Servicios</p>
     <h2 class="reveal">Qué te puedo hacer</h2>
     <p class="lede lede--left reveal">Precios cerrados, sin sorpresas. El desplazamiento dentro de Barcelona ciudad va incluido.</p>
-
-    <div class="grid grid--3 prices" id="prices"></div>
-
+    <div class="grid grid--3 prices">
+      <article class="price reveal">
+        <h3>Corte</h3>
+        <p class="price__desc">Corte a tijera o máquina, lavado y peinado con acabado de barbería.</p>
+        <p class="price__amount">18<small>€</small></p>
+        <p class="price__time">35 min aprox.</p>
+      </article>
+      <article class="price reveal" data-feat>
+        <span class="price__tag">El más pedido</span>
+        <h3>Corte + Barba</h3>
+        <p class="price__desc">El pack completo: corte, perfilado de barba con navaja y toalla caliente.</p>
+        <p class="price__amount">25<small>€</small></p>
+        <p class="price__time">55 min aprox.</p>
+      </article>
+      <article class="price reveal">
+        <h3>Barba</h3>
+        <p class="price__desc">Arreglo, perfilado y apurado con navaja. Aceite y bálsamo incluidos.</p>
+        <p class="price__amount">12<small>€</small></p>
+        <p class="price__time">25 min aprox.</p>
+      </article>
+      <article class="price reveal">
+        <h3>Corte infantil</h3>
+        <p class="price__desc">Para los peques, en casa y sin agobios. Hasta 12 años.</p>
+        <p class="price__amount">14<small>€</small></p>
+        <p class="price__time">30 min aprox.</p>
+      </article>
+      <article class="price reveal">
+        <h3>Rapado completo</h3>
+        <p class="price__desc">Máquina a un solo número, limpio y rápido.</p>
+        <p class="price__amount">12<small>€</small></p>
+        <p class="price__time">20 min aprox.</p>
+      </article>
+    </div>
     <p class="note reveal">¿Varias personas en la misma casa? Hay precio especial para grupos — pregúntame por WhatsApp.</p>
   </div>
 </section>
@@ -143,21 +188,27 @@
   <div class="wrap">
     <p class="eyebrow reveal">Por qué a domicilio</p>
     <h2 class="reveal">El corte, a tu ritmo</h2>
-
     <div class="grid grid--2 benefits">
-      <article class="bene reveal"><h3>Cero esperas</h3><p>Nada de llegar y encontrarte tres personas delante. Tu hora es tu hora.</p></article>
-      <article class="bene reveal"><h3>Ideal para niños</h3><p>En casa están tranquilos, con sus cosas y sin el agobio de la barbería.</p></article>
-      <article class="bene reveal">
-        <h3>Movilidad reducida</h3>
-        <p>Si salir de casa es un problema, voy yo. Personas mayores, convalecencias
-           o movilidad reducida: sin organizar desplazamientos ni depender de nadie.</p>
-      </article>
       <article class="bene reveal">
         <h3>Te atiendo en tu idioma</h3>
-        <p>Hablo <span data-idiomas></span>. Si acabas de llegar a Barcelona y te
-           cuesta explicar cómo quieres el corte, aquí no va a pasar.</p>
+        <p>Hablo castellano, català, english, français y deutsch. Si acabas de llegar a Barcelona y te cuesta explicar cómo quieres el corte, aquí no va a pasar.</p>
       </article>
-      <article class="bene reveal"><h3>Recojo todo</h3><p>Llego, trabajo y lo dejo todo limpio. No vas a barrer ni un pelo.</p></article>
+      <article class="bene reveal">
+        <h3>Movilidad reducida</h3>
+        <p>Si salir de casa es un problema, voy yo. Personas mayores, convalecencias o movilidad reducida: sin organizar desplazamientos ni depender de nadie.</p>
+      </article>
+      <article class="bene reveal">
+        <h3>Cero esperas</h3>
+        <p>Nada de llegar y encontrarte tres personas delante. Tu hora es tu hora.</p>
+      </article>
+      <article class="bene reveal">
+        <h3>Ideal para niños</h3>
+        <p>En casa están tranquilos, con sus cosas y sin el agobio de la barbería.</p>
+      </article>
+      <article class="bene reveal">
+        <h3>Recojo todo</h3>
+        <p>Llego, trabajo y lo dejo todo limpio. No vas a barrer ni un pelo.</p>
+      </article>
     </div>
   </div>
 </section>
@@ -169,7 +220,21 @@
       <p class="eyebrow">Zona de cobertura</p>
       <h2>Barcelona y alrededores</h2>
       <p class="lede lede--left">Me muevo por toda Barcelona ciudad. Si estás en el área metropolitana, escríbeme igualmente y lo miramos.</p>
-      <ul class="zona__list" id="zones"></ul>
+      <ul class="zona__list">
+        <li>Eixample</li>
+        <li>Gràcia</li>
+        <li>Sants</li>
+        <li>Sant Martí</li>
+        <li>Ciutat Vella</li>
+        <li>Sarrià</li>
+        <li>Les Corts</li>
+        <li>Horta</li>
+        <li>Nou Barris</li>
+        <li>Sant Andreu</li>
+        <li>Poblenou</li>
+        <li>L&#x27;Hospitalet</li>
+        <li>Badalona</li>
+      </ul>
     </div>
     <div class="zona__art reveal" aria-hidden="true">
       <img src="/assets/img/logo-mark.webp" alt="" width="520" height="520" loading="lazy">
@@ -183,11 +248,11 @@
   <div class="wrap final__in">
     <h2 class="reveal">¿Lo reservamos?</h2>
     <p class="lede reveal">Escríbeme por WhatsApp y te digo qué huecos tengo esta semana.</p>
-    <a class="btn btn--lg js-wa reveal" href="#" data-msg="Hola Alexis, quería reservar un corte a domicilio.">
+    <a class="btn btn--lg reveal" href="https://wa.me/34659412558?text=Hola%20Alexis%2C%20quer%C3%ADa%20reservar%20un%20corte%20a%20domicilio." target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>
       Hablar por WhatsApp
     </a>
-    <p class="final__hours reveal" id="hours"></p>
+    <p class="final__hours reveal">Lunes a sábado · 10:00 – 21:00</p>
   </div>
 </section>
 
@@ -195,18 +260,22 @@
 
 <footer class="foot">
   <div class="wrap foot__in">
-    <img class="foot__logo" src="/assets/img/logo-lockup.webp" alt="Alexis Barber · Barbería a domicilio · Barcelona" width="300" height="212" loading="lazy">
+    <img class="foot__logo" src="/assets/img/logo-lockup.webp" alt="Alexis Barber" width="300" height="212" loading="lazy">
     <div class="foot__side">
-      <a class="foot__ig" id="ig" href="#" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ig"/></svg>
-        <span>Instagram</span>
-      </a>
+      <ul class="foot__langs" aria-label="Idioma">
+        <li><a href="/" lang="es" class="is-on" aria-current="page">ES</a></li>
+        <li><a href="/ca/" lang="ca">CA</a></li>
+        <li><a href="/en/" lang="en">EN</a></li>
+        <li><a href="/fr/" lang="fr">FR</a></li>
+        <li><a href="/de/" lang="de">DE</a></li>
+      </ul>
+
       <p class="foot__legal">© <span id="year"></span> Alexis Barber · Barcelona</p>
     </div>
   </div>
 </footer>
 
-<a class="fab js-wa" href="#contacto" aria-label="Reservar por WhatsApp" data-msg="Hola Alexis, quería reservar un corte a domicilio.">
+<a class="fab" href="https://wa.me/34659412558?text=Hola%20Alexis%2C%20quer%C3%ADa%20reservar%20un%20corte%20a%20domicilio." target="_blank" rel="noopener" aria-label="Reservar por WhatsApp">
   <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>
 </a>
 
@@ -224,13 +293,71 @@
   "url": "https://alexisbarber.com/",
   "image": "https://alexisbarber.com/assets/img/og.jpg",
   "logo": "https://alexisbarber.com/assets/img/icon-512.png",
+  "telephone": "+34659412558",
   "priceRange": "€€",
-  "areaServed": { "@type": "City", "name": "Barcelona", "address": { "@type": "PostalAddress", "addressLocality": "Barcelona", "addressRegion": "Cataluña", "addressCountry": "ES" } },
-  "availableLanguage": ["es", "ca", "en", "fr", "de"],
+  "areaServed": {
+    "@type": "City",
+    "name": "Barcelona",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Barcelona",
+      "addressRegion": "Catalunya",
+      "addressCountry": "ES"
+    }
+  },
+  "availableLanguage": [
+    "es",
+    "ca",
+    "en",
+    "fr",
+    "de"
+  ],
   "makesOffer": [
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Corte de pelo a domicilio" } },
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Corte y barba a domicilio" } },
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Arreglo de barba a domicilio" } }
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Corte"
+      },
+      "price": 18,
+      "priceCurrency": "EUR"
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Corte + Barba"
+      },
+      "price": 25,
+      "priceCurrency": "EUR"
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Barba"
+      },
+      "price": 12,
+      "priceCurrency": "EUR"
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Corte infantil"
+      },
+      "price": 14,
+      "priceCurrency": "EUR"
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Rapado completo"
+      },
+      "price": 12,
+      "priceCurrency": "EUR"
+    }
   ]
 }
 </script>
@@ -238,10 +365,7 @@
 <script src="/assets/js/main.js" defer></script>
 
 <script type="importmap">
-{ "imports": {
-  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js",
-  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
-} }
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js" } }
 </script>
 <script type="module" src="/assets/js/logo3d.js"></script>
 </body>

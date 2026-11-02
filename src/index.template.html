@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="{{htmlLang}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{metaTitle}}</title>
+<meta name="description" content="{{metaDesc}}">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="{{canonical}}">
+{{hreflang}}
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{canonical}}">
+<meta property="og:title" content="{{ogTitle}}">
+<meta property="og:description" content="{{ogDesc}}">
+<meta property="og:image" content="{{dominio}}/assets/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="{{ogLocale}}">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/assets/img/favicon-32.png" sizes="32x32">
+<link rel="icon" href="/assets/img/icon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Inter:wght@400;500;600&display=swap">
+<link rel="preload" as="fetch" href="/assets/img/logo-shape.json" crossorigin>
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<a class="skip" href="#contenido">{{navSkip}}</a>
+
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a class="nav__brand" href="{{home}}" aria-label="{{navInicio}}">
+      <img src="/assets/img/logo-mark.webp" alt="" width="40" height="40">
+      <span>Alexis Barber</span>
+    </a>
+    <nav class="nav__links" aria-label="{{navPrincipal}}">
+      <a href="#como">{{navComo}}</a>
+      <a href="#servicios">{{navServicios}}</a>
+      <a href="#zona">{{navZona}}</a>
+    </nav>
+    <a class="btn btn--sm" href="{{waHref}}" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>
+      {{navReservar}}
+    </a>
+  </div>
+</header>
+
+<main id="contenido">
+
+<!-- ░░ HERO ░░ -->
+<section class="hero" id="inicio">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="hero__glow" aria-hidden="true"></div>
+
+  <div class="wrap hero__in">
+    <div class="stage" id="stage">
+      <span class="stage__glow" aria-hidden="true"></span>
+      <span class="stage__glint" aria-hidden="true"></span>
+      <div class="logo3d" id="logo3d" aria-hidden="true">
+       <div class="logo3d__tilt" id="tilt">
+        <div class="logo3d__spin" id="spin">
+          <img class="logo3d__face logo3d__face--front" src="/assets/img/logo-3d.webp" alt="" width="900" height="900" fetchpriority="high">
+          <img class="logo3d__face logo3d__face--back"  src="/assets/img/logo-3d.webp" alt="" width="900" height="900">
+          <span class="logo3d__sheen"></span>
+        </div>
+       </div>
+      </div>
+      <span class="stage__shadow" aria-hidden="true"></span>
+    </div>
+
+    <p class="eyebrow rise" style="--d:0s">{{heroEyebrow}}</p>
+    <h1 class="rise" style="--d:.06s">{{heroH1a}}<br><em>{{heroH1b}}</em></h1>
+    <p class="lede rise" style="--d:.12s">{{heroLede}}</p>
+
+    <div class="langs rise" style="--d:.18s">
+      <p class="langs__label">{{heroLangs}}</p>
+      <ul class="langs__list" aria-label="{{navIdioma}}">
+{{langPills}}
+      </ul>
+      <p class="langs__note">{{heroLangsNota}}</p>
+    </div>
+
+    <div class="cta rise" style="--d:.24s">
+      <a class="btn btn--lg" href="{{waHref}}" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>
+        {{heroCta1}}
+      </a>
+      <a class="btn btn--ghost btn--lg" href="#servicios">{{heroCta2}}</a>
+    </div>
+
+    <ul class="chips rise" style="--d:.30s">
+{{heroChips}}
+    </ul>
+  </div>
+
+  <a class="scrollcue" href="#como" aria-label="{{navBajar}}"><span></span></a>
+</section>
+
+<!-- ░░ CÓMO FUNCIONA ░░ -->
+<section class="sec" id="como">
+  <div class="wrap">
+    <p class="eyebrow reveal">{{comoEyebrow}}</p>
+    <h2 class="reveal">{{comoH2}}</h2>
+    <div class="grid grid--3 steps">
+{{comoSteps}}
+    </div>
+  </div>
+</section>
+
+<!-- ░░ SERVICIOS ░░ -->
+<section class="sec sec--alt" id="servicios">
+  <div class="wrap">
+    <p class="eyebrow reveal">{{servEyebrow}}</p>
+    <h2 class="reveal">{{servH2}}</h2>
+    <p class="lede lede--left reveal">{{servLede}}</p>
+    <div class="grid grid--3 prices">
+{{servItems}}
+    </div>
+    <p class="note reveal">{{servNota}}</p>
+  </div>
+</section>
+
+<!-- ░░ POR QUÉ ░░ -->
+<section class="sec" id="porque">
+  <div class="wrap">
+    <p class="eyebrow reveal">{{porqueEyebrow}}</p>
+    <h2 class="reveal">{{porqueH2}}</h2>
+    <div class="grid grid--2 benefits">
+{{porqueItems}}
+    </div>
+  </div>
+</section>
+
+<!-- ░░ ZONA ░░ -->
+<section class="sec sec--alt" id="zona">
+  <div class="wrap zona">
+    <div class="reveal">
+      <p class="eyebrow">{{zonaEyebrow}}</p>
+      <h2>{{zonaH2}}</h2>
+      <p class="lede lede--left">{{zonaLede}}</p>
+      <ul class="zona__list">
+{{zonaItems}}
+      </ul>
+    </div>
+    <div class="zona__art reveal" aria-hidden="true">
+      <img src="/assets/img/logo-mark.webp" alt="" width="520" height="520" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ░░ CTA FINAL ░░ -->
+<section class="final" id="contacto">
+  <div class="final__bg" aria-hidden="true"></div>
+  <div class="wrap final__in">
+    <h2 class="reveal">{{finalH2}}</h2>
+    <p class="lede reveal">{{finalLede}}</p>
+    <a class="btn btn--lg reveal" href="{{waHref}}" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>
+      {{finalCta}}
+    </a>
+    <p class="final__hours reveal">{{finalHorario}}</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <img class="foot__logo" src="/assets/img/logo-lockup.webp" alt="Alexis Barber" width="300" height="212" loading="lazy">
+    <div class="foot__side">
+      <ul class="foot__langs" aria-label="{{navIdioma}}">
+{{footLangs}}
+      </ul>
+{{footIg}}
+      <p class="foot__legal">© <span id="year"></span> Alexis Barber · {{footLegal}}</p>
+    </div>
+  </div>
+</footer>
+
+<a class="fab" href="{{waHref}}" target="_blank" rel="noopener" aria-label="{{waAria}}">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>
+</a>
+
+<svg style="display:none" aria-hidden="true">
+  <symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2 22l5.3-1.39a9.86 9.86 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.13-2.9-7A9.82 9.82 0 0 0 12.04 2m0 1.67c2.2 0 4.27.86 5.82 2.42a8.19 8.19 0 0 1 2.42 5.82c0 4.54-3.7 8.23-8.24 8.23a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.05-.2-.31a8.17 8.17 0 0 1-1.26-4.37c0-4.54 3.7-8.23 8.24-8.23M8.4 7.05c-.17 0-.44.06-.68.31-.23.26-.89.87-.89 2.12s.91 2.46 1.04 2.63c.13.17 1.79 2.74 4.34 3.73.6.26 1.08.42 1.45.53.61.2 1.16.17 1.6.1.49-.07 1.5-.61 1.72-1.21.21-.6.21-1.11.15-1.21-.07-.1-.24-.17-.5-.3-.26-.13-1.5-.74-1.74-.83-.23-.08-.4-.12-.57.13-.17.26-.65.83-.8 1-.14.17-.29.19-.55.06-.26-.13-1.07-.4-2.04-1.26-.76-.67-1.26-1.5-1.41-1.75-.15-.26-.02-.4.11-.52.12-.12.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.07-.13-.57-1.38-.78-1.89-.2-.49-.41-.42-.56-.43h-.48Z"/></symbol>
+  <symbol id="ig" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.8 3.8 0 0 1-1.38-.9 3.8 3.8 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16m0 2.16c-3.14 0-3.51.01-4.75.07-1.15.05-1.77.24-2.18.4-.55.22-.94.47-1.35.88-.41.41-.66.8-.88 1.35-.16.41-.35 1.03-.4 2.18-.06 1.24-.07 1.61-.07 4.75s.01 3.51.07 4.75c.05 1.15.24 1.77.4 2.18.22.55.47.94.88 1.35.41.41.8.66 1.35.88.41.16 1.03.35 2.18.4 1.24.06 1.61.07 4.75.07s3.51-.01 4.75-.07c1.15-.05 1.77-.24 2.18-.4.55-.22.94-.47 1.35-.88.41-.41.66-.8.88-1.35.16-.41.35-1.03.4-2.18.06-1.24.07-1.61.07-4.75s-.01-3.51-.07-4.75c-.05-1.15-.24-1.77-.4-2.18a3.6 3.6 0 0 0-.88-1.35 3.6 3.6 0 0 0-1.35-.88c-.41-.16-1.03-.35-2.18-.4-1.24-.06-1.61-.07-4.75-.07Zm0 2.87a4.81 4.81 0 1 1 0 9.62 4.81 4.81 0 0 1 0-9.62Zm0 7.93a3.12 3.12 0 1 0 0-6.24 3.12 3.12 0 0 0 0 6.24Zm6.13-8.12a1.12 1.12 0 1 1-2.25 0 1.12 1.12 0 0 1 2.25 0Z"/></symbol>
+</svg>
+
+<script type="application/ld+json">
+{{jsonld}}
+</script>
+
+<script src="/assets/js/main.js" defer></script>
+
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js" } }
+</script>
+<script type="module" src="/assets/js/logo3d.js"></script>
+</body>
+</html>

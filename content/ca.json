@@ -1,0 +1,129 @@
+{
+ "meta": {
+  "title": "Alexis Barber · Barberia a domicili a Barcelona",
+  "desc": "Barberia a domicili a Barcelona. L'Alexis va a casa teva amb tot el material: tall, degradat i barba sense desplaçar-te ni esperar. T'atén en castellano, català, english, français i deutsch.",
+  "ogTitle": "Alexis Barber · Barberia a domicili a Barcelona",
+  "ogDesc": "El teu barber va a casa teva. Tall, degradat i barba a domicili a Barcelona, en cinc idiomes."
+ },
+ "nav": {
+  "skip": "Vés al contingut",
+  "inicio": "Alexis Barber, inici",
+  "principal": "Principal",
+  "como": "Com funciona",
+  "servicios": "Serveis",
+  "zona": "Zona",
+  "reservar": "Reservar",
+  "idioma": "Idioma",
+  "bajar": "Baixar"
+ },
+ "wa": {
+  "msg": "Hola Alexis, volia reservar un tall a domicili.",
+  "aria": "Reservar per WhatsApp"
+ },
+ "hero": {
+  "eyebrow": "Barberia a domicili · Barcelona",
+  "h1a": "El teu barber",
+  "h1b": "va a casa teva",
+  "lede": "Tall, degradat i barba amb acabat de barberia, al teu menjador. Sense desplaçar-te, sense sala d'espera i a l'hora que et va bé.",
+  "cta1": "Reservar per WhatsApp",
+  "cta2": "Veure serveis",
+  "langs": "T'atenc en",
+  "langsNota": "Tria el teu idioma i el web canvia amb tu",
+  "chips": [
+   "Vinc amb tot el material",
+   "Resposta el mateix dia",
+   "Pagament en efectiu o Bizum"
+  ]
+ },
+ "como": {
+  "eyebrow": "Així de fàcil",
+  "h2": "Tres passos i llest",
+  "steps": [
+   {
+    "t": "Escriu-me per WhatsApp",
+    "d": "Em dius què et vols fer i a quina zona de Barcelona vius. Sense formularis ni registres."
+   },
+   {
+    "t": "Tanquem dia i hora",
+    "d": "Busquem el forat que millor et vagi. Tardes, caps de setmana i urgències d'última hora."
+   },
+   {
+    "t": "Vaig a casa teva",
+    "d": "Arribo amb màquines, tisores, capa i tot el necessari. Tu només posa una cadira."
+   }
+  ]
+ },
+ "servicios": {
+  "eyebrow": "Serveis",
+  "h2": "Què et puc fer",
+  "lede": "Preus tancats, sense sorpreses. El desplaçament dins de Barcelona ciutat va inclòs.",
+  "nota": "Sou diverses persones a la mateixa casa? Hi ha preu especial per a grups — pregunta-m'ho per WhatsApp.",
+  "tag": "El més demanat",
+  "min": "min aprox.",
+  "items": {
+   "corte": {
+    "n": "Tall",
+    "d": "Tall a tisora o màquina, rentat i pentinat amb acabat de barberia."
+   },
+   "corte-barba": {
+    "n": "Tall + Barba",
+    "d": "El pack complet: tall, perfilat de barba amb navalla i tovallola calenta."
+   },
+   "barba": {
+    "n": "Barba",
+    "d": "Arranjament, perfilat i apurat amb navalla. Oli i bàlsam inclosos."
+   },
+   "infantil": {
+    "n": "Tall infantil",
+    "d": "Per als petits, a casa i sense angoixes. Fins als 12 anys."
+   },
+   "rapado": {
+    "n": "Rapat complet",
+    "d": "Màquina a un sol número, net i ràpid."
+   }
+  }
+ },
+ "porque": {
+  "eyebrow": "Per què a domicili",
+  "h2": "El tall, al teu ritme",
+  "items": [
+   {
+    "t": "T'atenc en el teu idioma",
+    "d": "Parlo castellano, català, english, français i deutsch. Si acabes d'arribar a Barcelona i et costa explicar com vols el tall, aquí no passarà."
+   },
+   {
+    "t": "Mobilitat reduïda",
+    "d": "Si sortir de casa és un problema, hi vaig jo. Gent gran, convalescències o mobilitat reduïda: sense organitzar desplaçaments ni dependre de ningú."
+   },
+   {
+    "t": "Zero esperes",
+    "d": "Res d'arribar i trobar-te tres persones al davant. La teva hora és la teva hora."
+   },
+   {
+    "t": "Ideal per a nens",
+    "d": "A casa estan tranquils, amb les seves coses i sense l'angoixa de la barberia."
+   },
+   {
+    "t": "Ho recullo tot",
+    "d": "Arribo, treballo i ho deixo tot net. No hauràs d'escombrar ni un pèl."
+   }
+  ]
+ },
+ "zona": {
+  "eyebrow": "Zona de cobertura",
+  "h2": "Barcelona i rodalies",
+  "lede": "Em moc per tota Barcelona ciutat. Si ets a l'àrea metropolitana, escriu-me igualment i ho mirem."
+ },
+ "final": {
+  "h2": "El reservem?",
+  "lede": "Escriu-me per WhatsApp i et dic quins forats tinc aquesta setmana.",
+  "cta": "Parlar per WhatsApp",
+  "horario": "De dilluns a dissabte · 10:00 – 21:00"
+ },
+ "foot": {
+  "legal": "Barcelona"
+ },
+ "ld": {
+  "desc": "Barberia a domicili a Barcelona. Tall, degradat i arranjament de barba a casa del client. Atenció en castellà, català, anglès, francès i alemany, i servei a domicili per a persones amb mobilitat reduïda."
+ }
+}

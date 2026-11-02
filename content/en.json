@@ -1,0 +1,129 @@
+{
+ "meta": {
+  "title": "Alexis Barber · Home barber service in Barcelona",
+  "desc": "Barber at home in Barcelona. Alexis comes to your flat with everything: cut, fade and beard, no travelling and no waiting. He speaks castellano, català, english, français and deutsch.",
+  "ogTitle": "Alexis Barber · Home barber service in Barcelona",
+  "ogDesc": "Your barber comes to you. Cuts, fades and beard trims at home in Barcelona, in five languages."
+ },
+ "nav": {
+  "skip": "Skip to content",
+  "inicio": "Alexis Barber, home",
+  "principal": "Main",
+  "como": "How it works",
+  "servicios": "Services",
+  "zona": "Area",
+  "reservar": "Book",
+  "idioma": "Language",
+  "bajar": "Scroll down"
+ },
+ "wa": {
+  "msg": "Hi Alexis, I'd like to book a haircut at home.",
+  "aria": "Book on WhatsApp"
+ },
+ "hero": {
+  "eyebrow": "Barber at home · Barcelona",
+  "h1a": "Your barber",
+  "h1b": "comes to you",
+  "lede": "A proper barbershop cut, fade and beard trim — in your own living room. No travelling, no waiting room, at a time that actually suits you.",
+  "cta1": "Book on WhatsApp",
+  "cta2": "See services",
+  "langs": "I'll serve you in",
+  "langsNota": "Pick your language and the site follows",
+  "chips": [
+   "I bring all the kit",
+   "Same-day reply",
+   "Cash or Bizum"
+  ]
+ },
+ "como": {
+  "eyebrow": "Simple as that",
+  "h2": "Three steps and done",
+  "steps": [
+   {
+    "t": "Message me on WhatsApp",
+    "d": "Tell me what you want done and which part of Barcelona you live in. No forms, no sign-ups."
+   },
+   {
+    "t": "We pick a day and time",
+    "d": "We find the slot that works for you. Evenings, weekends and last-minute emergencies."
+   },
+   {
+    "t": "I come to your place",
+    "d": "I arrive with clippers, scissors, cape and everything else. All you need is a chair."
+   }
+  ]
+ },
+ "servicios": {
+  "eyebrow": "Services",
+  "h2": "What I can do for you",
+  "lede": "Fixed prices, no surprises. Travel within Barcelona city is included.",
+  "nota": "Several people in the same flat? There's a group rate — just ask me on WhatsApp.",
+  "tag": "Most booked",
+  "min": "min approx.",
+  "items": {
+   "corte": {
+    "n": "Haircut",
+    "d": "Scissor or clipper cut, wash and styling with a proper barbershop finish."
+   },
+   "corte-barba": {
+    "n": "Haircut + Beard",
+    "d": "The full thing: cut, razor beard line-up and a hot towel."
+   },
+   "barba": {
+    "n": "Beard",
+    "d": "Trim, line-up and close razor shave. Oil and balm included."
+   },
+   "infantil": {
+    "n": "Kids' haircut",
+    "d": "For the little ones, at home and stress-free. Up to 12 years old."
+   },
+   "rapado": {
+    "n": "Full buzz cut",
+    "d": "Single guard all over, clean and quick."
+   }
+  }
+ },
+ "porque": {
+  "eyebrow": "Why at home",
+  "h2": "A cut on your terms",
+  "items": [
+   {
+    "t": "I speak your language",
+    "d": "Castellano, català, english, français and deutsch. If you've just moved to Barcelona and struggle to explain how you want your hair, that won't happen here."
+   },
+   {
+    "t": "Reduced mobility",
+    "d": "If leaving the house is the hard part, I'll come to you. Older clients, recovery after surgery or reduced mobility: no transport to arrange, nobody to depend on."
+   },
+   {
+    "t": "No waiting",
+    "d": "No turning up to find three people ahead of you. Your slot is your slot."
+   },
+   {
+    "t": "Great for kids",
+    "d": "At home they're relaxed, surrounded by their own things, without the barbershop stress."
+   },
+   {
+    "t": "I clean up after",
+    "d": "I arrive, I work, and I leave it spotless. You won't sweep a single hair."
+   }
+  ]
+ },
+ "zona": {
+  "eyebrow": "Coverage",
+  "h2": "Barcelona and around",
+  "lede": "I cover the whole of Barcelona city. If you're in the metropolitan area, message me anyway and we'll sort it out."
+ },
+ "final": {
+  "h2": "Shall we book it?",
+  "lede": "Message me on WhatsApp and I'll tell you what I have free this week.",
+  "cta": "Chat on WhatsApp",
+  "horario": "Monday to Saturday · 10:00 – 21:00"
+ },
+ "foot": {
+  "legal": "Barcelona"
+ },
+ "ld": {
+  "desc": "Home barber service in Barcelona. Haircuts, fades and beard trims at the client's home. Service in Spanish, Catalan, English, French and German, including home visits for people with reduced mobility."
+ }
+}

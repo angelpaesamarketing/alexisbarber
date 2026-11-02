@@ -5,23 +5,54 @@ Web estática (HTML + CSS + JS, sin build) desplegada en Cloudflare Pages.
 
 ---
 
-## Contenido editable
+## ⚠️ Las páginas se generan: no las edites a mano
 
-Todo lo editable está en un solo sitio: el bloque `CONFIG` al principio de
-[`assets/js/main.js`](assets/js/main.js).
+`index.html`, `ca/index.html`, `en/index.html`, `fr/index.html` y
+`de/index.html` son **archivos generados**. Si los editas directamente, el
+cambio se pierde en la siguiente generación.
 
-| Campo | Estado | Qué poner |
-|---|---|---|
-| `whatsapp` | ✅ `34659412558` | — |
-| `instagram` | ❌ **vacío** | Usuario sin la `@`. Vacío oculta el enlace del footer |
-| `idiomas` | ✅ 5 idiomas | Se pintan solos en el hero y en las ventajas |
-| `servicios` | ⚠️ precios por confirmar | Revisar precios y duraciones |
-| `zonas` | ⚠️ revisar | Barrios de Barcelona que cubre |
-| `horario` | ⚠️ revisar | Texto libre que sale bajo el botón final |
+Lo que se edita está en `content/`:
 
-Alexis atiende en castellano, catalán, inglés, francés y alemán; los idiomas
-salen del array `CONFIG.idiomas` y se pintan solos en el hero y en la sección
-de ventajas.
+| Archivo | Qué contiene |
+|---|---|
+| `content/config.json` | WhatsApp, Instagram, dominio, idiomas, precios y duraciones, zonas |
+| `content/es.json` … `de.json` | Todos los textos de cada idioma |
+
+Después de tocar cualquiera de ellos:
+
+```bash
+python3 build.py
+```
+
+Escribe las cinco páginas y el `sitemap.xml`, y avisa si algún marcador de la
+plantilla se queda sin sustituir. No necesita dependencias. Cloudflare Pages
+**no** lo ejecuta: sirve los archivos ya generados, por eso hay que commitear
+el resultado junto con el cambio.
+
+La plantilla es `src/index.template.html`, con marcadores `{{clave}}`.
+
+## Idiomas
+
+Castellano (en `/`), català (`/ca/`), english (`/en/`), français (`/fr/`) y
+deutsch (`/de/`). Cada página es real y distinta: su propio `<title>`,
+descripción, datos estructurados y mensaje de WhatsApp ya escrito en ese
+idioma. Todas se enlazan entre sí con `hreflang`, así que Google puede
+posicionar la inglesa para quien busque en inglés — que es justo el público
+al que apunta el que Alexis hable cinco idiomas.
+
+Para añadir un idioma: una entrada en `idiomas` dentro de `config.json`, un
+`content/<code>.json` nuevo, y `python3 build.py`.
+
+## Precios y zonas
+
+Viven en `config.json` (números y nombres de barrio, iguales en todos los
+idiomas); los nombres y descripciones de cada servicio están en los archivos
+de idioma, enlazados por `id`. Hay que mantener los dos lados en sintonía: si
+añades un servicio en `config.json`, añade su `id` en los cinco idiomas o
+`build.py` fallará.
+
+Pendiente: **el usuario de Instagram**. Mientras `instagram` esté vacío en
+`config.json`, el enlace del footer no se genera.
 
 ## Desplegar en Cloudflare Pages
 
@@ -41,9 +72,13 @@ los registros DNS y el SSL se crean solos.
 ## Estructura
 
 ```
-index.html                  Página completa (una sola)
+index.html                  Página en castellano (generada)
+build.py                    Genera las 5 páginas desde content/
+src/index.template.html     Plantilla con marcadores {{clave}}
+content/                    Lo editable: config.json + un json por idioma
+ca/ en/ fr/ de/             Páginas generadas (no editar a mano)
 assets/css/style.css        Estilos
-assets/js/main.js           CONFIG + animaciones de la página
+assets/js/main.js           Interacción (ya no contiene contenido)
 assets/js/logo3d.js         Logo 3D con Three.js (bloque LOOK para ajustarlo)
 assets/img/
   logo-3d.webp               Logo cromado, cara frontal del giro

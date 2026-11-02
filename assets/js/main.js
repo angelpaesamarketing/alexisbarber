@@ -1,45 +1,10 @@
 /* ══════════════════════════════════════════════════════════════
-   ALEXIS BARBER — main.js
+   ALEXIS BARBER — comportamiento de la página
 
-   ┌──────────────────────────────────────────────────────────┐
-   │  TODO LO QUE HAY QUE EDITAR ESTÁ EN ESTE BLOQUE CONFIG.  │
-   │  No hace falta tocar nada más del archivo.               │
-   └──────────────────────────────────────────────────────────┘
-   ══════════════════════════════════════════════════════════════ */
-
-const CONFIG = {
-
-  // Móvil con prefijo y sin espacios ni "+"
-  whatsapp: "34659412558",
-
-  // ⚠️ PENDIENTE — usuario de Instagram sin la @ (deja "" para ocultar el enlace)
-  instagram: "",
-
-  // Horario que se muestra bajo el botón final
-  horario: "Lunes a sábado · 10:00 – 21:00",
-
-  // Idiomas en los que atiende, de más a menos habitual
-  idiomas: ["Castellano", "Català", "English", "Français", "Deutsch"],
-
-  // Servicios y precios. Añade o quita bloques libremente.
-  // feat: true  → destaca la tarjeta
-  servicios: [
-    { nombre: "Corte",            precio: 18, desc: "Corte a tijera o máquina, lavado y peinado con acabado de barbería.", tiempo: "35 min" },
-    { nombre: "Corte + Barba",    precio: 25, desc: "El pack completo: corte, perfilado de barba con navaja y toalla caliente.", tiempo: "55 min", feat: true, tag: "El más pedido" },
-    { nombre: "Barba",            precio: 12, desc: "Arreglo, perfilado y apurado con navaja. Aceite y bálsamo incluidos.", tiempo: "25 min" },
-    { nombre: "Corte infantil",   precio: 14, desc: "Para los peques, en casa y sin agobios. Hasta 12 años.", tiempo: "30 min" },
-    { nombre: "Rapado completo",  precio: 12, desc: "Máquina a un solo número, limpio y rápido.", tiempo: "20 min" }
-  ],
-
-  // Zonas de cobertura que se listan en la sección "Zona"
-  zonas: [
-    "Eixample","Gràcia","Sants","Sant Martí","Ciutat Vella","Sarrià",
-    "Les Corts","Horta","Nou Barris","Sant Andreu","Poblenou","L'Hospitalet","Badalona"
-  ]
-};
-
-/* ══════════════════════════════════════════════════════════════
-   A partir de aquí no hace falta tocar nada.
+   El CONTENIDO ya no vive aquí: las páginas se generan con
+   build.py a partir de content/*.json, una por idioma. Este
+   archivo solo se ocupa de la interacción y del respaldo del
+   logo cuando no hay WebGL.
    ══════════════════════════════════════════════════════════════ */
 
 (() => {
@@ -49,70 +14,19 @@ const CONFIG = {
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
   const lessMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* ── Enlaces de WhatsApp ───────────────────────────────── */
-  const waNumber = String(CONFIG.whatsapp || "").replace(/\D/g, "");
-  if (!waNumber) {
-    console.warn("[Alexis Barber] Falta CONFIG.whatsapp en /assets/js/main.js.");
-  }
-
-  $$(".js-wa").forEach(el => {
-    const msg = el.dataset.msg || "Hola Alexis, quería reservar un corte.";
-    el.href = `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`;
-    el.target = "_blank";
-    el.rel = "noopener";
-  });
-
-  /* ── Instagram ─────────────────────────────────────────── */
-  const ig = $("#ig");
-  if (ig) {
-    if (CONFIG.instagram) {
-      ig.href = `https://instagram.com/${CONFIG.instagram.replace(/^@/, "")}`;
-      ig.querySelector("span").textContent = `@${CONFIG.instagram.replace(/^@/, "")}`;
-    } else {
-      ig.remove();
-    }
-  }
-
-  /* ── Textos dinámicos ──────────────────────────────────── */
-  const yr = $("#year");          if (yr)  yr.textContent = new Date().getFullYear();
-  const hrs = $("#hours");        if (hrs) hrs.textContent = CONFIG.horario || "";
-
-  /* ── Tarjetas de precio ────────────────────────────────── */
-  const prices = $("#prices");
-  if (prices) {
-    prices.innerHTML = CONFIG.servicios.map(s => `
-      <article class="price reveal"${s.feat ? " data-feat" : ""}>
-        ${s.tag ? `<span class="price__tag">${s.tag}</span>` : ""}
-        <h3>${s.nombre}</h3>
-        <p class="price__desc">${s.desc}</p>
-        <p class="price__amount">${s.precio}<small>€</small></p>
-        ${s.tiempo ? `<p class="price__time">${s.tiempo} aprox.</p>` : ""}
-      </article>`).join("");
-  }
-
-  /* ── Idiomas ───────────────────────────────────────────── */
-  const idiomas = CONFIG.idiomas || [];
-  $$("[data-idiomas]").forEach(el => {
-    el.textContent = idiomas.join(" · ");
-  });
-
-  /* ── Zonas ─────────────────────────────────────────────── */
-  const zones = $("#zones");
-  if (zones) zones.innerHTML = CONFIG.zonas.map(z => `<li>${z}</li>`).join("");
+  const yr = $("#year"); if (yr) yr.textContent = new Date().getFullYear();
 
   const stage = $("#stage");
+  const spin  = $("#spin");
 
   /* ── Logo: pila de capas en CSS (respaldo sin WebGL) ───── */
-  const spin = $("#spin");
-
   const buildCssLogo = () => {
     if (!spin || spin.dataset.built) return;
     spin.dataset.built = "1";
-    const small = innerWidth < 560;
+
+    const small  = innerWidth < 560;
     const LAYERS = small ? 16 : 28;
 
-    // Grosor de la pieza, escalado al tamaño real del logo.
-    // Se publica como --depth para que las dos caras usen el mismo valor.
     const DEPTH = Math.round((spin.offsetWidth || 260) * 0.19);
     $("#logo3d").style.setProperty("--depth", DEPTH + "px");
 
@@ -125,12 +39,13 @@ const CONFIG = {
     const frag  = document.createDocumentFragment();
 
     for (let i = 0; i < LAYERS; i++) {
-      const t = i / (LAYERS - 1);                 // 0 → cara trasera, 1 → cara frontal
+      const t = i / (LAYERS - 1);
       const z = -SPAN / 2 + t * SPAN;
+
       // El tono va horneado en la imagen: un `filter` aquí haría que Chromium
-      // aplanase la lámina y ordenase todo el conjunto por orden de DOM
-      // en lugar de por profundidad, tapando las caras cromadas.
-      const edge = Math.abs(t - .5) * 2;                 // 0 centro · 1 borde
+      // aplanase la lámina y ordenase todo el conjunto por orden de DOM en
+      // lugar de por profundidad, tapando las caras cromadas.
+      const edge = Math.abs(t - .5) * 2;
       const tone = edge > .78 ? "l" : edge > .4 ? "m" : "d";
 
       const img = document.createElement("img");
@@ -145,8 +60,6 @@ const CONFIG = {
     spin.insertBefore(frag, front);
   };
 
-  // Si hay WebGL y el usuario no ha pedido menos movimiento, manda logo3d.js;
-  // ese módulo llama a __abFallback si no consigue arrancar.
   const hasWebGL = () => {
     try {
       const c = document.createElement("canvas");
@@ -171,11 +84,11 @@ const CONFIG = {
     buildCssLogo();
   }
 
-  /* ── Inclinación del logo con el puntero ───────────────── */
+  /* ── Inclinación del logo con el puntero (solo respaldo CSS) ── */
   const tilt = $("#tilt");
   if (tilt && !stage?.hasAttribute("data-webgl") && !lessMotion && matchMedia("(pointer: fine)").matches) {
     addEventListener("pointermove", e => {
-      const y = 13 + (e.clientY / innerHeight - .5) * -16;   // 5° … 21°
+      const y = 13 + (e.clientY / innerHeight - .5) * -16;
       const x = (e.clientX / innerWidth - .5) * 7;
       tilt.style.setProperty("--tx", `${y.toFixed(2)}deg`);
       tilt.style.setProperty("--tz", `${x.toFixed(2)}deg`);
@@ -190,9 +103,7 @@ const CONFIG = {
       obs.unobserve(en.target);
     });
   }, { rootMargin: "0px 0px -8% 0px", threshold: .12 });
-
-  const watchReveals = () => $$(".reveal:not([data-in])").forEach(el => io.observe(el));
-  watchReveals();
+  $$(".reveal").forEach(el => io.observe(el));
 
   /* ── Tilt 3D en las tarjetas ───────────────────────────── */
   if (!lessMotion && matchMedia("(pointer: fine)").matches) {
@@ -217,9 +128,8 @@ const CONFIG = {
     });
   }
 
-  /* ── Nav fijo + botón flotante ─────────────────────────── */
+  /* ── Nav fijo + botón flotante + paralaje del patrón ───── */
   const nav = $("#nav"), fab = $(".fab"), hero = $("#inicio"), bgLayer = $(".hero__bg");
-
   const onScroll = () => {
     const y = scrollY;
     nav.toggleAttribute("data-stuck", y > 30);

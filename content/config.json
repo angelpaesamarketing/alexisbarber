@@ -1,0 +1,85 @@
+{
+  "whatsapp": "34659412558",
+  "instagram": "",
+  "dominio": "https://alexisbarber.com",
+  "idiomas": [
+    {
+      "code": "es",
+      "dir": "",
+      "nombre": "Castellano",
+      "htmlLang": "es",
+      "ogLocale": "es_ES"
+    },
+    {
+      "code": "ca",
+      "dir": "ca/",
+      "nombre": "Català",
+      "htmlLang": "ca",
+      "ogLocale": "ca_ES"
+    },
+    {
+      "code": "en",
+      "dir": "en/",
+      "nombre": "English",
+      "htmlLang": "en",
+      "ogLocale": "en_GB"
+    },
+    {
+      "code": "fr",
+      "dir": "fr/",
+      "nombre": "Français",
+      "htmlLang": "fr",
+      "ogLocale": "fr_FR"
+    },
+    {
+      "code": "de",
+      "dir": "de/",
+      "nombre": "Deutsch",
+      "htmlLang": "de",
+      "ogLocale": "de_DE"
+    }
+  ],
+  "servicios": [
+    {
+      "id": "corte",
+      "precio": 18,
+      "min": 35
+    },
+    {
+      "id": "corte-barba",
+      "precio": 25,
+      "min": 55,
+      "feat": true
+    },
+    {
+      "id": "barba",
+      "precio": 12,
+      "min": 25
+    },
+    {
+      "id": "infantil",
+      "precio": 14,
+      "min": 30
+    },
+    {
+      "id": "rapado",
+      "precio": 12,
+      "min": 20
+    }
+  ],
+  "zonas": [
+    "Eixample",
+    "Gràcia",
+    "Sants",
+    "Sant Martí",
+    "Ciutat Vella",
+    "Sarrià",
+    "Les Corts",
+    "Horta",
+    "Nou Barris",
+    "Sant Andreu",
+    "Poblenou",
+    "L'Hospitalet",
+    "Badalona"
+  ]
+}

@@ -1,0 +1,129 @@
+{
+ "meta": {
+  "title": "Alexis Barber · Barbería a domicilio en Barcelona",
+  "desc": "Barbería a domicilio en Barcelona. Alexis va a tu casa con todo el material: corte, degradado y barba sin desplazarte ni esperar. Atiende en castellano, català, english, français y deutsch.",
+  "ogTitle": "Alexis Barber · Barbería a domicilio en Barcelona",
+  "ogDesc": "Tu barbero va a tu casa. Corte, degradado y barba a domicilio en Barcelona, en cinco idiomas."
+ },
+ "nav": {
+  "skip": "Saltar al contenido",
+  "inicio": "Alexis Barber, inicio",
+  "principal": "Principal",
+  "como": "Cómo funciona",
+  "servicios": "Servicios",
+  "zona": "Zona",
+  "reservar": "Reservar",
+  "idioma": "Idioma",
+  "bajar": "Bajar"
+ },
+ "wa": {
+  "msg": "Hola Alexis, quería reservar un corte a domicilio.",
+  "aria": "Reservar por WhatsApp"
+ },
+ "hero": {
+  "eyebrow": "Barbería a domicilio · Barcelona",
+  "h1a": "Tu barbero",
+  "h1b": "viene a tu casa",
+  "lede": "Corte, degradado y barba con acabado de barbería, en tu salón. Sin desplazarte, sin sala de espera y a la hora que te va bien.",
+  "cta1": "Reservar por WhatsApp",
+  "cta2": "Ver servicios",
+  "langs": "Te atiendo en",
+  "langsNota": "Elige tu idioma y la web cambia contigo",
+  "chips": [
+   "Voy con todo el material",
+   "Respuesta el mismo día",
+   "Pago en efectivo o Bizum"
+  ]
+ },
+ "como": {
+  "eyebrow": "Así de fácil",
+  "h2": "Tres pasos y listo",
+  "steps": [
+   {
+    "t": "Escríbeme por WhatsApp",
+    "d": "Me dices qué te quieres hacer y en qué zona de Barcelona vives. Sin formularios ni registros."
+   },
+   {
+    "t": "Cerramos día y hora",
+    "d": "Buscamos el hueco que mejor te venga. Tardes, fines de semana y urgencias de última hora."
+   },
+   {
+    "t": "Voy a tu casa",
+    "d": "Llego con máquinas, tijeras, capa y todo lo necesario. Tú solo pon una silla."
+   }
+  ]
+ },
+ "servicios": {
+  "eyebrow": "Servicios",
+  "h2": "Qué te puedo hacer",
+  "lede": "Precios cerrados, sin sorpresas. El desplazamiento dentro de Barcelona ciudad va incluido.",
+  "nota": "¿Varias personas en la misma casa? Hay precio especial para grupos — pregúntame por WhatsApp.",
+  "tag": "El más pedido",
+  "min": "min aprox.",
+  "items": {
+   "corte": {
+    "n": "Corte",
+    "d": "Corte a tijera o máquina, lavado y peinado con acabado de barbería."
+   },
+   "corte-barba": {
+    "n": "Corte + Barba",
+    "d": "El pack completo: corte, perfilado de barba con navaja y toalla caliente."
+   },
+   "barba": {
+    "n": "Barba",
+    "d": "Arreglo, perfilado y apurado con navaja. Aceite y bálsamo incluidos."
+   },
+   "infantil": {
+    "n": "Corte infantil",
+    "d": "Para los peques, en casa y sin agobios. Hasta 12 años."
+   },
+   "rapado": {
+    "n": "Rapado completo",
+    "d": "Máquina a un solo número, limpio y rápido."
+   }
+  }
+ },
+ "porque": {
+  "eyebrow": "Por qué a domicilio",
+  "h2": "El corte, a tu ritmo",
+  "items": [
+   {
+    "t": "Te atiendo en tu idioma",
+    "d": "Hablo castellano, català, english, français y deutsch. Si acabas de llegar a Barcelona y te cuesta explicar cómo quieres el corte, aquí no va a pasar."
+   },
+   {
+    "t": "Movilidad reducida",
+    "d": "Si salir de casa es un problema, voy yo. Personas mayores, convalecencias o movilidad reducida: sin organizar desplazamientos ni depender de nadie."
+   },
+   {
+    "t": "Cero esperas",
+    "d": "Nada de llegar y encontrarte tres personas delante. Tu hora es tu hora."
+   },
+   {
+    "t": "Ideal para niños",
+    "d": "En casa están tranquilos, con sus cosas y sin el agobio de la barbería."
+   },
+   {
+    "t": "Recojo todo",
+    "d": "Llego, trabajo y lo dejo todo limpio. No vas a barrer ni un pelo."
+   }
+  ]
+ },
+ "zona": {
+  "eyebrow": "Zona de cobertura",
+  "h2": "Barcelona y alrededores",
+  "lede": "Me muevo por toda Barcelona ciudad. Si estás en el área metropolitana, escríbeme igualmente y lo miramos."
+ },
+ "final": {
+  "h2": "¿Lo reservamos?",
+  "lede": "Escríbeme por WhatsApp y te digo qué huecos tengo esta semana.",
+  "cta": "Hablar por WhatsApp",
+  "horario": "Lunes a sábado · 10:00 – 21:00"
+ },
+ "foot": {
+  "legal": "Barcelona"
+ },
+ "ld": {
+  "desc": "Barbería a domicilio en Barcelona. Corte, degradado y arreglo de barba en casa del cliente. Atención en castellano, catalán, inglés, francés y alemán, y servicio a domicilio para personas con movilidad reducida."
+ }
+}
