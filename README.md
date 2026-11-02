@@ -141,18 +141,23 @@ Un metal es un espejo: su aspecto **es** lo que refleja. Por eso el entorno es
 un estudio de focos claros sobre fondo oscuro, pintado en un `<canvas>` de
 1024×512 — sin él, con un degradado plano, la pieza parece plástico mate.
 
-Dos detalles que lo sostienen:
+**Los focos van difuminados en los dos ejes** (el helper `foco` usa degradado
+radial): con cantos duros, una superficie casi especular los refleja como
+bandas nítidas.
 
-- **Los focos van difuminados en los dos ejes.** Con cantos duros, una
-  superficie casi especular los refleja como bandas nítidas. El helper `foco`
-  los dibuja con degradado radial justamente por eso.
-- **Ruido fino sobre todo el mapa.** Un degradado en 8 bits, al difuminarse
-  para la rugosidad del canto, se cuantiza y sale en terrazas.
+**Nada de ruido sobre el mapa.** Se probó, para evitar bandeado del degradado,
+y con la cara casi a espejo el reflejo lo reproduce píxel a píxel: se ve como
+grano sobre el logo. El bandeado que ese ruido pretendía arreglar no existía;
+era el chaflán.
 
 **La cara y el canto llevan rugosidad distinta a propósito**: la cara en 0,055
-(casi espejo, es la que lee como cromo) y el canto en 0,48. El canto necesita
-más difusión porque las facetas del contorno poligonal, con un entorno tan
-contrastado, se marcarían. Bajarlo lo raya.
+(casi espejo, es la que lee como cromo) y el canto en 0,60. El canto necesita
+bastante más difusión porque las facetas del contorno poligonal giran hasta
+20° entre sí y, con un entorno contrastado, se marcan. Bajarlo lo raya.
+
+Se evaluó atacar la causa limitando el giro por faceta al generar el contorno,
+pero bajar de 20° a 6,5° exigía pasar de 4.100 a 12.600 puntos: triplicar la
+geometría por una mejora que solo se aprecia en un fotograma de la vuelta.
 
 ### Respaldo sin WebGL
 

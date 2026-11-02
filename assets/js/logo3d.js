@@ -21,7 +21,7 @@ const LOOK = {
   pausaCaras: .34,   // 0 = velocidad constante; más alto = se demora de frente
   faseIni:    -.34,  // ángulo inicial, para que la primera imagen sea legible
   caraBrillo: .055,  // rugosidad de la cara: 0 = espejo
-  cantoBrillo:.48,   // rugosidad del canto. Va aparte de la cara a propósito:
+  cantoBrillo:.60,   // rugosidad del canto. Va aparte de la cara a propósito:
                      // la cara es la que lee como cromo, y el canto necesita
                      // algo más de difusión para que las facetas del contorno
                      // no se marquen. Bajarlo lo raya.
@@ -164,15 +164,6 @@ async function build() {
     foco(830, 160, 170, 190, "rgba(5,3,4,.95)");
     foco(450, 190, 160, 160, "rgba(5,3,4,.88)");
 
-    // Ruido fino: un degradado en 8 bits, al difuminarse para la rugosidad
-    // del canto, se cuantiza y sale en terrazas. El ruido lo rompe.
-    const img = g.getImageData(0, 0, EW, EH);
-    const d = img.data;
-    for (let i = 0; i < d.length; i += 4) {
-      const n = (Math.random() - .5) * 10;
-      d[i] += n; d[i + 1] += n; d[i + 2] += n;
-    }
-    g.putImageData(img, 0, 0);
   }
 
   /* ── Render ──────────────────────────────────────────────── */
