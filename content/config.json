@@ -25,11 +25,11 @@
       "ogLocale": "en_GB"
     },
     {
-      "code": "fr",
-      "dir": "fr/",
-      "nombre": "Français",
-      "htmlLang": "fr",
-      "ogLocale": "fr_FR"
+      "code": "pt",
+      "dir": "pt/",
+      "nombre": "Português",
+      "htmlLang": "pt",
+      "ogLocale": "pt_PT"
     },
     {
       "code": "de",

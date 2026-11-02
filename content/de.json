@@ -1,7 +1,7 @@
 {
  "meta": {
   "title": "Alexis Barber · Mobiler Barbier in Barcelona",
-  "desc": "Barbier für zu Hause in Barcelona. Alexis kommt mit allem zu dir: Haarschnitt, Fade und Bart, ohne Anfahrt und ohne Wartezeit. Er spricht castellano, català, english, français und deutsch.",
+  "desc": "Barbier für zu Hause in Barcelona. Alexis kommt mit allem zu dir: Haarschnitt, Fade und Bart, ohne Anfahrt und ohne Wartezeit. Er spricht castellano, català, english, português und deutsch.",
   "ogTitle": "Alexis Barber · Mobiler Barbier in Barcelona",
   "ogDesc": "Dein Barbier kommt zu dir. Haarschnitt, Fade und Bartpflege zu Hause in Barcelona, in fünf Sprachen."
  },
@@ -90,7 +90,7 @@
   "items": [
    {
     "t": "Ich spreche deine Sprache",
-    "d": "Castellano, català, english, français und deutsch. Wenn du gerade erst nach Barcelona gezogen bist und dir schwerfällt zu erklären, wie du deinen Schnitt willst — hier passiert das nicht."
+    "d": "Castellano, català, english, português und deutsch. Wenn du gerade erst nach Barcelona gezogen bist und dir schwerfällt zu erklären, wie du deinen Schnitt willst — hier passiert das nicht."
    },
    {
     "t": "Eingeschränkte Mobilität",
@@ -125,6 +125,6 @@
   "legal": "Barcelona"
  },
  "ld": {
-  "desc": "Mobiler Barbier in Barcelona. Haarschnitte, Fades und Bartpflege beim Kunden zu Hause. Service auf Spanisch, Katalanisch, Englisch, Französisch und Deutsch, auch für Menschen mit eingeschränkter Mobilität."
+  "desc": "Mobiler Barbier in Barcelona. Haarschnitte, Fades und Bartpflege beim Kunden zu Hause. Service auf Spanisch, Katalanisch, Englisch, Portugiesisch und Deutsch, auch für Menschen mit eingeschränkter Mobilität."
  }
 }

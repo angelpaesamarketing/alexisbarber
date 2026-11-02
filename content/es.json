@@ -1,7 +1,7 @@
 {
  "meta": {
   "title": "Alexis Barber · Barbería a domicilio en Barcelona",
-  "desc": "Barbería a domicilio en Barcelona. Alexis va a tu casa con todo el material: corte, degradado y barba sin desplazarte ni esperar. Atiende en castellano, català, english, français y deutsch.",
+  "desc": "Barbería a domicilio en Barcelona. Alexis va a tu casa con todo el material: corte, degradado y barba sin desplazarte ni esperar. Atiende en castellano, català, english, português y deutsch.",
   "ogTitle": "Alexis Barber · Barbería a domicilio en Barcelona",
   "ogDesc": "Tu barbero va a tu casa. Corte, degradado y barba a domicilio en Barcelona, en cinco idiomas."
  },
@@ -90,7 +90,7 @@
   "items": [
    {
     "t": "Te atiendo en tu idioma",
-    "d": "Hablo castellano, català, english, français y deutsch. Si acabas de llegar a Barcelona y te cuesta explicar cómo quieres el corte, aquí no va a pasar."
+    "d": "Hablo castellano, català, english, português y deutsch. Si acabas de llegar a Barcelona y te cuesta explicar cómo quieres el corte, aquí no va a pasar."
    },
    {
     "t": "Movilidad reducida",
@@ -125,6 +125,6 @@
   "legal": "Barcelona"
  },
  "ld": {
-  "desc": "Barbería a domicilio en Barcelona. Corte, degradado y arreglo de barba en casa del cliente. Atención en castellano, catalán, inglés, francés y alemán, y servicio a domicilio para personas con movilidad reducida."
+  "desc": "Barbería a domicilio en Barcelona. Corte, degradado y arreglo de barba en casa del cliente. Atención en castellano, catalán, inglés, portugués y alemán, y servicio a domicilio para personas con movilidad reducida."
  }
 }

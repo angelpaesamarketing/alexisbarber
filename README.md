@@ -16,7 +16,7 @@ Lo que se edita está en `content/`:
 | Archivo | Qué contiene |
 |---|---|
 | `content/config.json` | WhatsApp, Instagram, dominio, idiomas, precios y duraciones, zonas |
-| `content/es.json` … `de.json` | Todos los textos de cada idioma |
+| `content/es.json`, `ca`, `en`, `pt`, `de` | Todos los textos de cada idioma |
 
 Después de tocar cualquiera de ellos:
 
@@ -33,7 +33,7 @@ La plantilla es `src/index.template.html`, con marcadores `{{clave}}`.
 
 ## Idiomas
 
-Castellano (en `/`), català (`/ca/`), english (`/en/`), français (`/fr/`) y
+Castellano (en `/`), català (`/ca/`), english (`/en/`), português (`/pt/`) y
 deutsch (`/de/`). Cada página es real y distinta: su propio `<title>`,
 descripción, datos estructurados y mensaje de WhatsApp ya escrito en ese
 idioma. Todas se enlazan entre sí con `hreflang`, así que Google puede
@@ -41,7 +41,14 @@ posicionar la inglesa para quien busque en inglés — que es justo el público
 al que apunta el que Alexis hable cinco idiomas.
 
 Para añadir un idioma: una entrada en `idiomas` dentro de `config.json`, un
-`content/<code>.json` nuevo, y `python3 build.py`.
+`content/<code>.json` nuevo, y `python3 build.py`. Al quitar uno hay que
+borrar también su carpeta generada y revisar las menciones en prosa de los
+otros idiomas (la ventaja «te atiendo en tu idioma», las descripciones y los
+datos estructurados los enumeran a mano).
+
+Hubo una versión en francés, sustituida por la portuguesa. `_redirects` manda
+`/fr/*` a la página en castellano por si el enlace quedó guardado en algún
+sitio.
 
 ## Precios y zonas
 
@@ -76,7 +83,7 @@ index.html                  Página en castellano (generada)
 build.py                    Genera las 5 páginas desde content/
 src/index.template.html     Plantilla con marcadores {{clave}}
 content/                    Lo editable: config.json + un json por idioma
-ca/ en/ fr/ de/             Páginas generadas (no editar a mano)
+ca/ en/ pt/ de/             Páginas generadas (no editar a mano)
 assets/css/style.css        Estilos
 assets/js/main.js           Interacción (ya no contiene contenido)
 assets/js/logo3d.js         Logo 3D con Three.js (bloque LOOK para ajustarlo)

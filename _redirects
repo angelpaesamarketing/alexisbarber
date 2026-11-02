@@ -1,0 +1,4 @@
+# La versión en francés se retiró al sustituirla por portugués.
+# Si alguien tiene el enlace guardado, cae en la página en castellano
+# en vez de en un 404.
+/fr/*  /  301
