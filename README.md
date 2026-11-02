@@ -5,21 +5,23 @@ Web estática (HTML + CSS + JS, sin build) desplegada en Cloudflare Pages.
 
 ---
 
-## ⚠️ Pendiente antes de publicar en el dominio
+## Contenido editable
 
 Todo lo editable está en un solo sitio: el bloque `CONFIG` al principio de
 [`assets/js/main.js`](assets/js/main.js).
 
 | Campo | Estado | Qué poner |
 |---|---|---|
-| `whatsapp` | ❌ **provisional** (`34600000000`) | Móvil con prefijo, sin `+` ni espacios. Ej: `34612345678` |
-| `instagram` | ❌ **vacío** | Usuario sin la `@`. Si se deja vacío, el enlace del footer desaparece solo |
-| `servicios` | ⚠️ precios de ejemplo | Revisar nombres, precios y duraciones |
+| `whatsapp` | ✅ `34659412558` | — |
+| `instagram` | ❌ **vacío** | Usuario sin la `@`. Vacío oculta el enlace del footer |
+| `idiomas` | ✅ 5 idiomas | Se pintan solos en el hero y en las ventajas |
+| `servicios` | ⚠️ precios por confirmar | Revisar precios y duraciones |
 | `zonas` | ⚠️ revisar | Barrios de Barcelona que cubre |
 | `horario` | ⚠️ revisar | Texto libre que sale bajo el botón final |
 
-Mientras `whatsapp` siga siendo el número provisional, la consola del navegador
-muestra un aviso.
+Alexis atiende en castellano, catalán, inglés, francés y alemán; los idiomas
+salen del array `CONFIG.idiomas` y se pintan solos en el hero y en la sección
+de ventajas.
 
 ## Desplegar en Cloudflare Pages
 
@@ -69,31 +71,42 @@ instantes en que queda de canto, donde la marca no se lee. La curva es
 
 Todo el aspecto se ajusta desde el bloque `LOOK` al principio del archivo
 (grosor, chaflán, rugosidad, reflejos, duración de la vuelta). No hace falta
-leer el resto.
+leer el resto — pero lee el aviso de abajo antes de tocar `bisel`.
 
-### Tres avisos para quien lo toque
+### Por qué el canto se ve liso (y qué lo rompe)
 
-- **El chaflán no puede crecer mucho.** Por encima de `bisel: .012` el chaflán
-  se auto-interseca en las zonas cóncavas y deforma las letras.
+Costó encontrarlo porque parecía un problema de sombreado y era geométrico.
+Tres cosas lo sostienen; quitar cualquiera devuelve el escalonado:
 
-- **El canto se ve liso por tres cosas combinadas**, y quitar cualquiera de
-  ellas devuelve el rayado:
-  1. `cantoBrillo` está en **0,38**. Es la que más pesa: difumina el reflejo
-     del canto lo justo para que las facetas de la pared dejen de delatarse.
-     Bajarlo a 0,16 devuelve las rayas aunque todo lo demás siga igual.
-  2. El mapa de entorno se pinta a **192×96 px** a propósito, dibujando en
-     coordenadas de 1024×512 y escalando el contexto. A resolución alta, los
-     cantos duros de los focos se reflejan en la pared como bandas nítidas.
-  3. `alisado` (40°) suaviza las normales de la pared manteniendo el chaflán,
-     y `toCreasedNormals` se aplica **antes** de escalar la pieza a 1 unidad:
-     agrupa vértices con precisión fija de ~0,01, que a escala final sería el
-     1 % del logo y mezclaría cara con chaflán. `bevelSegments` vale **1** por
-     lo mismo: con un solo tramo el chaflán queda a 45°, por encima del
-     umbral; partido en dos, el primer tramo cae a ~22° y las caras se vetean.
+- **`bisel` está en 0,0018 y no puede subir.** Es la causa real. El chaflán
+  desplaza el contorno hacia dentro, y las curvas de estas letras tienen un
+  radio muy pequeño: en cuanto el desplazamiento supera ese radio, el borde se
+  cruza consigo mismo y el canto sale a escalones. A 0,004 ya se nota, y a
+  0,010 es evidente en los huecos de las letras.
 
-- **La densidad de `logo-shape.json` importa.** El contorno se muestreó cada
-  2,6 px (unos 2.750 puntos). Con muestreos más gruesos, las curvas cerradas
-  generan facetas de ángulo grande que quedan fuera del alisado.
+- **El contorno se aplana por curvatura, no por longitud.** `logo-shape.json`
+  se genera subdividiendo cada bézier hasta que se separa menos de 0,08
+  unidades de su cuerda (4.109 puntos). Muestrear cada N píxeles deja
+  escalones angulares grandes justo en las curvas cerradas.
+
+- **`alisado` (40°) suavizando las normales**, aplicado **antes** de escalar
+  la pieza a 1 unidad: `toCreasedNormals` agrupa vértices con una precisión
+  fija de ~0,01, que a escala final sería el 1 % del logo y mezclaría las
+  normales de la cara con las del chaflán, veteándolas. `bevelSegments` vale
+  **1** por lo mismo: con un tramo el chaflán queda a 45°, por encima del
+  umbral; partido en dos, el primero cae a ~22° y se mezcla con la cara.
+
+Descartados por el camino, por si vuelve a aparecer: no eran las normales
+(medido: a 40° solo el 5,9 % de los triángulos del lateral quedan planos), ni
+la resolución del mapa de entorno, ni su contraste, ni triángulos degenerados.
+
+### El entorno de reflejos
+
+Es un degradado vertical liso con ruido fino, dibujado en un `<canvas>` de
+512×256. Nada más, y a propósito: se probaron focos pintados y el
+`RoomEnvironment` de Three.js, y los dos tienen cantos duros que una superficie
+casi especular refleja como bandas. El ruido evita que el degradado se cuantice
+al difuminarse para la rugosidad del canto.
 
 ### Respaldo sin WebGL
 

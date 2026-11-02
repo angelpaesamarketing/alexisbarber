@@ -9,15 +9,17 @@
 
 const CONFIG = {
 
-  // ⚠️ PENDIENTE — pon aquí el móvil con prefijo y SIN espacios ni "+"
-  //    Ejemplo para España: "34612345678"
-  whatsapp: "34600000000",
+  // Móvil con prefijo y sin espacios ni "+"
+  whatsapp: "34659412558",
 
   // ⚠️ PENDIENTE — usuario de Instagram sin la @ (deja "" para ocultar el enlace)
   instagram: "",
 
   // Horario que se muestra bajo el botón final
   horario: "Lunes a sábado · 10:00 – 21:00",
+
+  // Idiomas en los que atiende, de más a menos habitual
+  idiomas: ["Castellano", "Català", "English", "Français", "Deutsch"],
 
   // Servicios y precios. Añade o quita bloques libremente.
   // feat: true  → destaca la tarjeta
@@ -26,8 +28,7 @@ const CONFIG = {
     { nombre: "Corte + Barba",    precio: 25, desc: "El pack completo: corte, perfilado de barba con navaja y toalla caliente.", tiempo: "55 min", feat: true, tag: "El más pedido" },
     { nombre: "Barba",            precio: 12, desc: "Arreglo, perfilado y apurado con navaja. Aceite y bálsamo incluidos.", tiempo: "25 min" },
     { nombre: "Corte infantil",   precio: 14, desc: "Para los peques, en casa y sin agobios. Hasta 12 años.", tiempo: "30 min" },
-    { nombre: "Rapado completo",  precio: 12, desc: "Máquina a un solo número, limpio y rápido.", tiempo: "20 min" },
-    { nombre: "Cejas y detalles", precio: 5,  desc: "Perfilado de cejas o retoque de líneas. Solo junto a otro servicio.", tiempo: "10 min" }
+    { nombre: "Rapado completo",  precio: 12, desc: "Máquina a un solo número, limpio y rápido.", tiempo: "20 min" }
   ],
 
   // Zonas de cobertura que se listan en la sección "Zona"
@@ -50,13 +51,8 @@ const CONFIG = {
 
   /* ── Enlaces de WhatsApp ───────────────────────────────── */
   const waNumber = String(CONFIG.whatsapp || "").replace(/\D/g, "");
-  const isPlaceholder = !waNumber || waNumber === "34600000000";
-
-  if (isPlaceholder) {
-    console.warn(
-      "[Alexis Barber] El número de WhatsApp todavía es el provisional.\n" +
-      "Edita CONFIG.whatsapp en /assets/js/main.js antes de publicar en el dominio."
-    );
+  if (!waNumber) {
+    console.warn("[Alexis Barber] Falta CONFIG.whatsapp en /assets/js/main.js.");
   }
 
   $$(".js-wa").forEach(el => {
@@ -93,6 +89,12 @@ const CONFIG = {
         ${s.tiempo ? `<p class="price__time">${s.tiempo} aprox.</p>` : ""}
       </article>`).join("");
   }
+
+  /* ── Idiomas ───────────────────────────────────────────── */
+  const idiomas = CONFIG.idiomas || [];
+  $$("[data-idiomas]").forEach(el => {
+    el.textContent = idiomas.join(" · ");
+  });
 
   /* ── Zonas ─────────────────────────────────────────────── */
   const zones = $("#zones");

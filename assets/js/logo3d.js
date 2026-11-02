@@ -13,13 +13,15 @@ import * as THREE from "three";
    cómo se ve la pieza; el resto del archivo no hace falta leerlo. */
 const LOOK = {
   grosor:     .17,   // profundidad de la extrusión, en anchos de logo
-  bisel:      .010,  // ancho del chaflán del borde (subirlo deforma las letras)
+  bisel:      .0018,  // ancho del chaflán. NO subirlo: el chaflán desplaza el
+                     // contorno hacia dentro, y en las curvas cerradas de las
+                     // letras ese desplazamiento se cruza consigo mismo y el
+                     // canto sale escalonado. A .010 ya se nota.
   vueltaSeg:  16,    // segundos por vuelta completa
   pausaCaras: .34,   // 0 = velocidad constante; más alto = se demora de frente
   faseIni:    -.34,  // ángulo inicial, para que la primera imagen sea legible
-  caraBrillo: .07,   // rugosidad de la cara: 0 = espejo
-  cantoBrillo:.38,   // rugosidad del canto: difumina el reflejo y con él
-                     // las bandas que delatan las facetas de la pared
+  caraBrillo: .12,   // rugosidad de la cara: 0 = espejo
+  cantoBrillo:.34,   // rugosidad del canto
   reflejos:   2.5,   // intensidad de los reflejos del entorno
   exposicion: 1.08,
   alisado:    40,    // grados: por debajo de este ángulo se suavizan las
@@ -117,57 +119,33 @@ async function build() {
   const scene = new THREE.Scene();
   scene.add(pivot);
 
-  /* ── Escena de reflejos (sin archivos externos) ──────────── */
-  // El entorno se pinta A BAJA RESOLUCIÓN a propósito. Comprobado: con un
-  // entorno plano los laterales salen perfectamente lisos, así que las rayas
-  // del canto no venían de la geometría sino de reflejar cantos duros del
-  // mapa. A 192x96, el filtrado bilineal los difumina por construcción y ya
-  // no pueden existir. Se dibuja en coordenadas de 1024x512 y se escala.
-  const EW = 192, EH = 96;
-  const c = document.createElement("canvas");
-  c.width = EW; c.height = EH;
-  const g = c.getContext("2d");
-  g.scale(EW / 1024, EH / 512);
+  /* ── Escena de reflejos ──────────────────────────────────── */
+  // Un degradado liso, nada más. Se probaron focos pintados y el
+  // RoomEnvironment de Three.js: los dos tienen cantos duros que una
+  // superficie casi especular refleja como bandas.
+  const envCanvas = document.createElement("canvas");
+  envCanvas.width = 512; envCanvas.height = 256;
+  {
+    const g = envCanvas.getContext("2d");
+    const gr = g.createLinearGradient(0, 0, 0, 256);
+    gr.addColorStop(0,   "#1a1314");
+    gr.addColorStop(.30, "#584244");
+    gr.addColorStop(.50, "#f2e2e1");
+    gr.addColorStop(.70, "#4b383a");
+    gr.addColorStop(1,   "#0c0909");
+    g.fillStyle = gr; g.fillRect(0, 0, 512, 256);
 
-  const grad = g.createLinearGradient(0, 0, 0, 512);
-  grad.addColorStop(0,   "#140e0f");
-  grad.addColorStop(.34, "#4a3739");
-  grad.addColorStop(.5,  "#e7d3d2");
-  grad.addColorStop(.68, "#3a2b2c");
-  grad.addColorStop(1,   "#0a0708");
-  g.fillStyle = grad; g.fillRect(0, 0, 1024, 512);
-
-  // Focos de estudio: lo que dibuja los brillos del cromo. Van con los bordes
-  // difuminados en los dos ejes a propósito. Con bordes duros, la pared lisa
-  // del canto refleja esos cantos como bandas nítidas y el lateral parece
-  // rayado aunque la geometría esté perfectamente suavizada.
-  const strip = (x, y, w, h, col) => {
-    const cx = x + w / 2, cy = y + h / 2, r = Math.max(w, h) / 2;
-    const rg = g.createRadialGradient(cx, cy, 0, cx, cy, r);
-    rg.addColorStop(0, col);
-    rg.addColorStop(.45, col);
-    rg.addColorStop(1, "transparent");
-    g.save();
-    g.translate(cx, cy); g.scale(1, h / Math.max(w, h)); g.translate(-cx, -cy);
-    g.fillStyle = rg; g.beginPath(); g.arc(cx, cy, r, 0, Math.PI * 2); g.fill();
-    g.restore();
-  };
-  strip(20,  10, 360, 170, "#ffffff");
-  strip(540, 26, 340, 160, "#ffffff");
-  strip(380, 80, 130, 100, "#fff4f3");
-  strip(860, 54, 170, 130, "#ffffff");
-  strip(80,  310, 420, 150, "rgba(255,206,204,1)");
-  strip(600, 292, 300, 130, "rgba(255,234,233,.95)");
-  // zonas oscuras entre focos: sin ellas el reflejo sale plano
-  strip(320, 150, 120, 170, "rgba(14,10,11,.78)");
-  strip(850, 160, 140, 160, "rgba(14,10,11,.78)");
-  strip(460, 190, 130, 140, "rgba(14,10,11,.7)");
-
-  const envTex = new THREE.CanvasTexture(c);
-  envTex.mapping = THREE.EquirectangularReflectionMapping;
-  envTex.magFilter = THREE.LinearFilter;
-  envTex.minFilter = THREE.LinearFilter;
-  envTex.colorSpace = THREE.SRGBColorSpace;
+    // Ruido fino. Un degradado liso en 8 bits, al difuminarse para la
+    // rugosidad alta, se cuantiza y aparece como terrazas en las paredes
+    // interiores. El ruido rompe esos escalones y el desenfoque lo promedia.
+    const img = g.getImageData(0, 0, 512, 256);
+    const d = img.data;
+    for (let i = 0; i < d.length; i += 4) {
+      const n = (Math.random() - .5) * 11;
+      d[i] += n; d[i + 1] += n; d[i + 2] += n;
+    }
+    g.putImageData(img, 0, 0);
+  }
 
   /* ── Render ──────────────────────────────────────────────── */
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
@@ -176,6 +154,9 @@ async function build() {
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = LOOK.exposicion;
 
+  const envTex = new THREE.CanvasTexture(envCanvas);
+  envTex.mapping = THREE.EquirectangularReflectionMapping;
+  envTex.colorSpace = THREE.SRGBColorSpace;
   const pmrem = new THREE.PMREMGenerator(renderer);
   scene.environment = pmrem.fromEquirectangular(envTex).texture;
   envTex.dispose(); pmrem.dispose();

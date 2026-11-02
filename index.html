@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Alexis Barber · Barbería a domicilio en Barcelona</title>
-<meta name="description" content="Barbería a domicilio en Barcelona. Alexis va a tu casa con todo el material: corte, degradado y barba sin desplazarte ni esperar. Reserva por WhatsApp.">
+<meta name="description" content="Barbería a domicilio en Barcelona. Alexis va a tu casa con todo el material: corte, degradado y barba sin desplazarte ni esperar. Atiende en castellano, catalán, inglés, francés y alemán, y se desplaza a domicilio para personas con movilidad reducida. Reserva por WhatsApp.">
 <meta name="theme-color" content="#000000">
 <link rel="canonical" href="https://alexisbarber.com/">
 
@@ -92,6 +92,7 @@
       <li>Voy con todo el material</li>
       <li>Respuesta el mismo día</li>
       <li>Pago en efectivo o Bizum</li>
+      <li data-idiomas></li>
     </ul>
   </div>
 
@@ -146,7 +147,16 @@
     <div class="grid grid--2 benefits">
       <article class="bene reveal"><h3>Cero esperas</h3><p>Nada de llegar y encontrarte tres personas delante. Tu hora es tu hora.</p></article>
       <article class="bene reveal"><h3>Ideal para niños</h3><p>En casa están tranquilos, con sus cosas y sin el agobio de la barbería.</p></article>
-      <article class="bene reveal"><h3>Para mayores o con movilidad reducida</h3><p>No hace falta que nadie salga de casa ni organice el desplazamiento.</p></article>
+      <article class="bene reveal">
+        <h3>Movilidad reducida</h3>
+        <p>Si salir de casa es un problema, voy yo. Personas mayores, convalecencias
+           o movilidad reducida: sin organizar desplazamientos ni depender de nadie.</p>
+      </article>
+      <article class="bene reveal">
+        <h3>Te atiendo en tu idioma</h3>
+        <p>Hablo <span data-idiomas></span>. Si acabas de llegar a Barcelona y te
+           cuesta explicar cómo quieres el corte, aquí no va a pasar.</p>
+      </article>
       <article class="bene reveal"><h3>Recojo todo</h3><p>Llego, trabajo y lo dejo todo limpio. No vas a barrer ni un pelo.</p></article>
     </div>
   </div>
@@ -210,13 +220,13 @@
   "@context": "https://schema.org",
   "@type": "HairSalon",
   "name": "Alexis Barber",
-  "description": "Barbería a domicilio en Barcelona. Corte, degradado y arreglo de barba en casa del cliente.",
+  "description": "Barbería a domicilio en Barcelona. Corte, degradado y arreglo de barba en casa del cliente. Atención en castellano, catalán, inglés, francés y alemán, y servicio a domicilio para personas con movilidad reducida.",
   "url": "https://alexisbarber.com/",
   "image": "https://alexisbarber.com/assets/img/og.jpg",
   "logo": "https://alexisbarber.com/assets/img/icon-512.png",
   "priceRange": "€€",
   "areaServed": { "@type": "City", "name": "Barcelona", "address": { "@type": "PostalAddress", "addressLocality": "Barcelona", "addressRegion": "Cataluña", "addressCountry": "ES" } },
-  "availableLanguage": ["es", "ca"],
+  "availableLanguage": ["es", "ca", "en", "fr", "de"],
   "makesOffer": [
     { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Corte de pelo a domicilio" } },
     { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Corte y barba a domicilio" } },
